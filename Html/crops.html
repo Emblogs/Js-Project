@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NaijaFarm — Crops Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/Css/style.css"/>
+  <link rel="stylesheet" href="/Css/crops.css"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#" onclick="goHome(event)"><span class="logo-icon icon"><i data-lucide="wheat"></i></span><span class="logo-name">NaijaFarm</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+    <li><a href="crops.html" class="active"><i data-lucide="sprout"></i> Crops</a></li>
+    <li><a href="animals.html"><i data-lucide="beef"></i> Animals</a></li>
+    <li><a href="workers.html"><i data-lucide="hard-hat"></i> Workers</a></li>
+    <li><a href="market.html"><i data-lucide="shopping-cart"></i> Market</a></li>
+    <li><a href="government.html"><i data-lucide="landmark"></i> Government</a></li>
+  </ul>
+  <div class="nav-right"><span id="navUser"><i data-lucide="user"></i> <span id="navUserName"></span></span>
+    </button>
+    <button class="btn-signout" onclick="logout()"><i data-lucide="log-out"></i> Sign Out</button></div>
+</nav>
+
+<div class="page-hero">
+  <h1><i data-lucide="sprout"></i> <span>Crops</span> Tracker</h1>
+  <p>Monitor planting dates, growth, and estimated harvest for all your Nigerian crops.</p>
+</div>
+
+<div class="page-section">
+  <!-- Harvest reminder banner — shown by reminders.js when crops are due -->
+  <div id="reminderBanner"></div>
+
+  <!-- Add crop form -->
+  <h2 class="section-title"><i data-lucide="plus-circle"></i> Add New Crop</h2>
+  <div class="form-card">
+    <div class="form-row">
+      <div class="form-group"><label><i data-lucide="sprout"></i> Crop Name *</label><input id="cName" placeholder="e.g. Maize, Cassava, Yam"/></div>
+      <div class="form-group"><label><i data-lucide="layers"></i> Crop Type *</label>
+        <select id="cType"><option value="">-- Select --</option>
+          <option>Cereal (Maize, Sorghum, Rice)</option><option>Root &amp; Tuber (Yam, Cassava, Cocoyam)</option>
+          <option>Legume (Cowpea, Groundnut, Soybean)</option><option>Vegetable (Tomato, Pepper, Okra)</option>
+          <option>Tree Crop (Palm, Cocoa, Cashew)</option><option>Fruit (Mango, Plantain, Banana)</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label><i data-lucide="calendar"></i> Date Planted *</label><input id="cPlanted" type="date"/></div>
+      <div class="form-group"><label><i data-lucide="timer"></i> Harvest (days)</label><input id="cHarvestDays" type="number" placeholder="e.g. 120" min="1"/></div>
+      <div class="form-group"><label><i data-lucide="map-pin"></i> Farm Location</label><input id="cLocation" placeholder="e.g. North Field, Ibadan"/></div>
+      <div class="form-group"><label><i data-lucide="ruler"></i> Plot Size (ha)</label><input id="cPlotSize" type="number" step="0.1" placeholder="e.g. 2.5"/></div>
+      <div class="form-group"><label><i data-lucide="activity"></i> Status</label>
+        <select id="cStatus"><option>Growing</option><option>Harvested</option><option>Failed</option><option>Dormant</option></select>
+      </div>
+      <div class="form-group"><label><i data-lucide="file-text"></i> Notes</label><input id="cNotes" placeholder="Any additional notes"/></div>
+    </div>
+    <button class="btn btn-primary" onclick="addCrop()"><i data-lucide="plus"></i> Add Crop Record</button>
+  </div>
+
+  <!-- Crops records table (rendered by crops.js) -->
+  <h2 class="section-title"><i data-lucide="list"></i> Crop Records</h2>
+  <p class="section-sub">All crops with age since planting and estimated harvest countdown.</p>
+  <div id="cropsList"></div>
+
+</div><!-- close page-section, re-opened below for modal -->
+<div class="modal-overlay" id="delModal">
+  <div class="modal">
+    <h2><i data-lucide="trash-2"></i> Delete Crop?</h2>
+    <p>Are you sure you want to remove this crop record? This cannot be undone.</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeDelModal()">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()"><i data-lucide="trash-2"></i> Delete</button>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+
+<footer id="site-footer" class="site-footer"></footer>
+<script src="/Js/core.js"></script>
+<script src="/Js/edit.js"></script>
+<script src="/Js/reminders.js"></script>
+<script src="/Js/crops.js"></script>
+<script src="/Js/footer.js"></script>
+<script>
+  (function() {
+    const s = getSession();
+    if (s && s.name) { const el = document.getElementById('navUserName'); if (el) el.textContent = s.name; }
+  })();
+  lucide.createIcons();
+</script>
+</body>
+</html>

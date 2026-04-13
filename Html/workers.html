@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NaijaFarm — Worker Records</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/Css/style.css"/>
+  <link rel="stylesheet" href="/Css/workers.css"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#" onclick="goHome(event)"><span class="logo-icon icon"><i data-lucide="wheat"></i></span><span class="logo-name">NaijaFarm</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+    <li><a href="crops.html"><i data-lucide="sprout"></i> Crops</a></li>
+    <li><a href="animals.html"><i data-lucide="beef"></i> Animals</a></li>
+    <li><a href="workers.html" class="active"><i data-lucide="hard-hat"></i> Workers</a></li>
+    <li><a href="market.html"><i data-lucide="shopping-cart"></i> Market</a></li>
+    <li><a href="government.html"><i data-lucide="landmark"></i> Government</a></li>
+  </ul>
+  <div class="nav-right"><span id="navUser"><i data-lucide="user"></i> <span id="navUserName"></span></span>
+    </button>
+    <button class="btn-signout" onclick="logout()"><i data-lucide="log-out"></i> Sign Out</button></div>
+</nav>
+
+<div class="page-hero">
+  <h1><i data-lucide="hard-hat"></i> <span>Worker</span> Records</h1>
+  <p>Manage farm employees, wages, roles, and employment details.</p>
+</div>
+
+<div class="page-section">
+
+  <!-- Payroll stats -->
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-icon"><i data-lucide="users"></i></div><div class="stat-num" id="sTotal">0</div><div class="stat-label">Total Workers</div></div>
+    <div class="stat-card"><div class="stat-icon"><i data-lucide="user-check"></i></div><div class="stat-num" id="sActive">0</div><div class="stat-label">Active Staff</div></div>
+    <div class="stat-card"><div class="stat-icon"><i data-lucide="banknote"></i></div><div class="stat-num" id="sWages">&#8358;0</div><div class="stat-label">Monthly Payroll</div></div>
+  </div>
+
+  <!-- Add worker form -->
+  <h2 class="section-title"><i data-lucide="plus-circle"></i> Add Worker</h2>
+  <div class="form-card">
+    <div class="form-row">
+      <div class="form-group"><label><i data-lucide="user"></i> Full Name *</label><input id="wName" placeholder="e.g. Emeka Okonkwo"/></div>
+      <div class="form-group"><label><i data-lucide="briefcase"></i> Role *</label>
+        <select id="wRole"><option value="">-- Select --</option>
+          <option>Farm Manager</option><option>Crop Supervisor</option><option>Animal Keeper</option>
+          <option>Driver / Logistics</option><option>Security Guard</option><option>General Farm Hand</option>
+          <option>Irrigation Technician</option><option>Tractor Operator</option><option>Accountant / Bookkeeper</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label><i data-lucide="phone"></i> Phone Number</label><input id="wPhone" placeholder="e.g. 08012345678"/></div>
+      <div class="form-group"><label><i data-lucide="map-pin"></i> State of Origin</label>
+        <select id="wState"><option value="">-- Select State --</option>
+          <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option>
+          <option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option>
+          <option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option>
+          <option>Ekiti</option><option>Enugu</option><option>FCT - Abuja</option><option>Gombe</option>
+          <option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option>
+          <option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+          <option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option>
+          <option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option>
+          <option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+        </select>
+      </div>
+      <div class="form-group"><label><i data-lucide="calendar"></i> Start Date *</label><input id="wStart" type="date"/></div>
+      <div class="form-group"><label><i data-lucide="banknote"></i> Monthly Wage (&#8358;)</label><input id="wWage" type="number" placeholder="e.g. 35000"/></div>
+      <div class="form-group"><label><i data-lucide="clock"></i> Employment Type</label>
+        <select id="wType"><option>Full-time</option><option>Part-time</option><option>Seasonal</option><option>Contract</option></select>
+      </div>
+      <div class="form-group"><label><i data-lucide="activity"></i> Status</label>
+        <select id="wStatus"><option>Active</option><option>On Leave</option><option>Resigned</option><option>Terminated</option></select>
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:16px">
+      <label><i data-lucide="file-text"></i> Notes</label>
+      <textarea id="wNotes" rows="2" placeholder="Skills, qualifications, references..." style="resize:vertical"></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="addWorker()"><i data-lucide="plus"></i> Add Worker</button>
+  </div>
+
+  <!-- Staff directory table (rendered by workers.js) -->
+  <h2 class="section-title"><i data-lucide="list"></i> Staff Directory</h2>
+  <p class="section-sub">All farm workers with employment history and payroll details.</p>
+  <div id="workersList"></div>
+
+
+<!-- Edit record modal (populated dynamically by edit.js) -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <h2 id="editModalTitle">Edit Record</h2>
+    <div id="editFormWrap"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeEditModal()">Cancel</button>
+      <button class="btn btn-gold" onclick="saveEdit()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save Changes
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="delModal">
+  <div class="modal">
+    <h2><i data-lucide="trash-2"></i> Remove Worker?</h2>
+    <p>This will permanently delete the worker record.</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeDelModal()">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()"><i data-lucide="trash-2"></i> Delete</button>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+
+<footer id="site-footer" class="site-footer"></footer>
+<script src="/Js/core.js"></script>
+<script src="/Js/edit.js"></script>
+<script src="/Js/reminders.js"></script>
+<script src="/Js/workers.js"></script>
+<script src="/Js/footer.js"></script>
+<script>
+  (function() {
+    const s = getSession();
+    if (s && s.name) { const el = document.getElementById('navUserName'); if (el) el.textContent = s.name; }
+  })();
+  lucide.createIcons();
+</script>
+</body>
+</html>

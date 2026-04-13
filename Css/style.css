@@ -1,0 +1,1248 @@
+/* ==========================================================
+   NAIJAFARM MANAGER — style.css
+   Global shared styles. Imported by every page.
+   Icons: Lucide (https://lucide.dev) loaded via CDN.
+   Fonts: Playfair Display (headings) + DM Sans (body).
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+/* ----------------------------------------------------------
+   DESIGN TOKENS (CSS variables)
+   Change a value here and it updates the entire app.
+   ---------------------------------------------------------- */
+:root {
+  --green-deep: #1a4a1a;
+  --green-mid: #2d7a2d;
+  --green-light: #4caf50;
+  --gold: #d4a017;
+  --gold-light: #f0c040;
+  --earth: #8b5e3c;
+  --cream: #faf6ee;
+  --white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-muted: #666;
+  --border: #e0d8c8;
+  --danger: #c0392b;
+  --success: #27ae60;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  --radius: 14px;
+}
+
+/* ----------------------------------------------------------
+   RESET & BASE
+   ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ----------------------------------------------------------
+   LUCIDE ICON DEFAULTS
+   All <i data-lucide="..."> icons are sized consistently.
+   ---------------------------------------------------------- */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+  vertical-align: middle;
+}
+.icon-sm svg {
+  width: 14px;
+  height: 14px;
+}
+.icon-lg svg {
+  width: 24px;
+  height: 24px;
+}
+.icon-xl svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* ----------------------------------------------------------
+   TOP NAVIGATION BAR
+   ---------------------------------------------------------- */
+nav {
+  background: var(--green-deep);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Logo group */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo .logo-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--gold);
+}
+.nav-logo .logo-name {
+  font-family: "Playfair Display", serif;
+  color: var(--gold);
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+/* Nav links list */
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  padding: 8px 13px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-links a svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  background: rgba(212, 160, 23, 0.18);
+  color: var(--gold-light);
+}
+
+/* Nav right side — username + logout */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#navUser {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#navUser svg {
+  width: 15px;
+  height: 15px;
+  stroke: rgba(255, 255, 255, 0.5);
+}
+.btn-signout {
+  background: rgba(212, 160, 23, 0.15);
+  border: 1px solid rgba(212, 160, 23, 0.35);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.btn-signout:hover {
+  background: rgba(212, 160, 23, 0.28);
+}
+.btn-signout svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gold);
+}
+
+/* ----------------------------------------------------------
+   PAGE HERO BANNER (used on inner pages)
+   ---------------------------------------------------------- */
+.page-hero {
+  background: linear-gradient(
+    135deg,
+    var(--green-deep) 0%,
+    var(--green-mid) 60%,
+    #3a8f3a 100%
+  );
+  padding: 44px 40px 38px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.page-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--white);
+  font-weight: 900;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.page-hero h1 svg {
+  width: 36px;
+  height: 36px;
+  stroke: var(--gold);
+}
+.page-hero h1 span {
+  color: var(--gold);
+}
+.page-hero p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 10px;
+  font-size: 1rem;
+  position: relative;
+}
+
+/* ----------------------------------------------------------
+   LAYOUT CONTAINERS
+   ---------------------------------------------------------- */
+.page-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 28px;
+}
+
+/* ----------------------------------------------------------
+   SECTION HEADINGS
+   ---------------------------------------------------------- */
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: var(--green-deep);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--green-mid);
+}
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+/* ----------------------------------------------------------
+   STAT CARDS ROW
+   ---------------------------------------------------------- */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.stat-card .stat-icon {
+  margin-bottom: 8px;
+}
+.stat-card .stat-icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--green-mid);
+}
+.stat-card .stat-num {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(
+    1rem,
+    3.5vw,
+    2rem
+  ); /* shrinks automatically for large numbers */
+  color: var(--green-deep);
+  font-weight: 900;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  line-height: 1.2;
+}
+.stat-card .stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ----------------------------------------------------------
+   FEATURE / INFO CARDS GRID
+   ---------------------------------------------------------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 12px 0 32px;
+}
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 20px;
+  border: 1.5px solid var(--border);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+.card-icon {
+  margin-bottom: 12px;
+}
+.card-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--green-mid);
+}
+.card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  color: var(--green-deep);
+  margin-bottom: 6px;
+}
+.card p {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+/* ----------------------------------------------------------
+   FORM CARD CONTAINER
+   ---------------------------------------------------------- */
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px 24px;
+  border: 1.5px solid var(--border);
+  margin-bottom: 28px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.form-group label svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--green-mid);
+}
+
+/* ----------------------------------------------------------
+   INPUTS, SELECTS, TEXTAREAS
+   ---------------------------------------------------------- */
+input,
+select,
+textarea {
+  padding: 9px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  background: var(--cream);
+  color: var(--text-dark);
+  transition: border 0.2s;
+  outline: none;
+  width: 100%;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--green-light);
+  background: var(--white);
+}
+
+/* ----------------------------------------------------------
+   BUTTONS
+   ---------------------------------------------------------- */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+}
+
+.btn-primary {
+  background: var(--green-mid);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--green-deep);
+  transform: translateY(-1px);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-gold:hover {
+  background: #b8860f;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--white);
+  padding: 7px 14px;
+  font-size: 0.82rem;
+}
+.btn-danger:hover {
+  background: #a93226;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.82rem;
+}
+
+/* ----------------------------------------------------------
+   DATA TABLES
+   ---------------------------------------------------------- */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 0.88rem;
+}
+th {
+  background: var(--green-deep);
+  color: var(--white);
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.3px;
+}
+th svg {
+  width: 13px;
+  height: 13px;
+  stroke: rgba(255, 255, 255, 0.7);
+  vertical-align: middle;
+  margin-right: 4px;
+}
+td {
+  padding: 11px 15px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+tr:hover td {
+  background: #f5f2eb;
+}
+
+/* ----------------------------------------------------------
+   BADGES / STATUS PILLS
+   ---------------------------------------------------------- */
+.badge {
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.badge svg {
+  width: 11px;
+  height: 11px;
+  stroke: currentColor;
+}
+.badge-green {
+  background: #d4edda;
+  color: #155724;
+}
+.badge-gold {
+  background: #fff3cd;
+  color: #856404;
+}
+.badge-red {
+  background: #f8d7da;
+  color: #721c24;
+}
+.badge-blue {
+  background: #cce5ff;
+  color: #004085;
+}
+
+/* ----------------------------------------------------------
+   PROGRESS / GROWTH BAR
+   ---------------------------------------------------------- */
+.age-bar {
+  background: #e0e0e0;
+  border-radius: 20px;
+  height: 9px;
+  overflow: hidden;
+}
+.age-bar-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--green-light), var(--gold));
+  transition: width 0.5s;
+}
+
+/* ----------------------------------------------------------
+   TOAST NOTIFICATION
+   ---------------------------------------------------------- */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--green-deep);
+  color: var(--white);
+  padding: 13px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  animation: slideUp 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-left: 4px solid var(--gold);
+}
+.toast--error {
+  border-left-color: var(--danger);
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------------------------
+   MODAL / OVERLAY
+   ---------------------------------------------------------- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open {
+  display: flex;
+}
+.modal {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  width: 94%;
+  max-width: 480px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.22);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal h2 {
+  font-family: "Playfair Display", serif;
+  color: var(--green-deep);
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.modal h2 svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--danger);
+}
+.modal p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+/* ----------------------------------------------------------
+   GOVERNMENT PROGRAMME CARD
+   ---------------------------------------------------------- */
+.govt-card {
+  background: linear-gradient(135deg, #003a00 0%, #1a5e1a 100%);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  color: var(--white);
+  margin-bottom: 16px;
+  border: 1.5px solid #2d7a2d;
+  position: relative;
+  overflow: hidden;
+}
+.govt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--gold);
+  color: var(--green-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 0.4px;
+}
+.govt-badge svg {
+  width: 11px;
+  height: 11px;
+  stroke: var(--green-deep);
+}
+.govt-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.govt-card p {
+  font-size: 0.88rem;
+  opacity: 0.88;
+  line-height: 1.65;
+}
+
+/* ----------------------------------------------------------
+   EMPTY STATE
+   ---------------------------------------------------------- */
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--text-muted);
+}
+.empty-state .empty-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke: #ccc;
+  margin-bottom: 12px;
+}
+.empty-state p {
+  font-size: 0.92rem;
+}
+
+/* ----------------------------------------------------------
+   COMPREHENSIVE FOOTER
+   ---------------------------------------------------------- */
+.site-footer {
+  background: var(--green-deep);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "DM Sans", sans-serif;
+  margin-top: 60px;
+}
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 36px 28px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 40px;
+}
+.footer-brand .brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+}
+.footer-brand .brand-logo svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--gold);
+}
+.footer-brand .brand-name {
+  font-family: "Playfair Display", serif;
+  color: var(--gold);
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+.footer-brand p {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  opacity: 0.75;
+  max-width: 250px;
+}
+.footer-socials {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.footer-socials a {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.footer-socials a:hover {
+  background: rgba(212, 160, 23, 0.2);
+}
+.footer-socials a svg {
+  width: 16px;
+  height: 16px;
+} /* brand SVGs handle their own fill/stroke */
+
+.footer-col h4 {
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.footer-col ul a {
+  color: rgba(255, 255, 255, 0.68);
+  text-decoration: none;
+  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: color 0.2s;
+}
+.footer-col ul a svg {
+  width: 13px;
+  height: 13px;
+  stroke: rgba(255, 255, 255, 0.4);
+}
+.footer-col ul a:hover {
+  color: var(--gold);
+}
+.footer-col ul a:hover svg {
+  stroke: var(--gold);
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.84rem;
+}
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  opacity: 0.75;
+}
+.footer-contact-item svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gold);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.footer-contact-item a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+.footer-contact-item a:hover {
+  color: var(--gold);
+}
+
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom span {
+  font-size: 0.78rem;
+  opacity: 0.5;
+}
+.footer-bottom .footer-love {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.footer-bottom .footer-love svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--gold);
+  fill: var(--gold);
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   Three breakpoints:
+     - Tablet:  max-width 960px
+     - Mobile:  max-width 640px
+     - Tiny:    max-width 400px
+   ---------------------------------------------------------- */
+
+/* ── TABLET (960px and below) ── */
+@media (max-width: 960px) {
+  /* Footer collapses to 2 columns */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  /* Nav: hide text labels, keep icons only */
+  .nav-links a span {
+    display: none;
+  }
+
+  /* Stats row: allow 2 per row */
+  .stats-row {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  /* Cards grid: 2 per row */
+  .cards-grid,
+  .quick-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Form rows: 2 columns max */
+  .form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Page hero: smaller padding */
+  .page-hero {
+    padding: 32px 24px 28px;
+  }
+  .page-hero h1 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+  }
+}
+
+/* ── MOBILE (640px and below) ── */
+@media (max-width: 640px) {
+  /* NAV: collapse links into hamburger-style hidden menu */
+  nav {
+    padding: 0 14px;
+    height: 60px;
+  }
+  .nav-links {
+    display: none;
+  } /* hidden on mobile — user navigates via footer or back btn */
+  .nav-logo .logo-name {
+    font-size: 1.1rem;
+  }
+
+  /* Show a compact mobile nav bar below the top nav */
+  .mobile-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: var(--green-deep);
+    border-top: 1px solid rgba(212, 160, 23, 0.25);
+    padding: 6px 0 8px;
+    justify-content: space-around;
+  }
+  .mobile-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: color 0.2s;
+    flex: 1;
+  }
+  .mobile-nav a svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
+  .mobile-nav a.active,
+  .mobile-nav a:hover {
+    color: var(--gold);
+  }
+
+  /* Add bottom padding so content doesn't hide behind mobile nav */
+  body {
+    padding-bottom: 72px;
+  }
+
+  /* Nav right: hide username text, keep toggle + signout */
+  #navUser span#navUserName {
+    display: none;
+  }
+  .btn-signout span {
+    display: none;
+  } /* hide "Sign Out" text, keep icon */
+  .btn-signout {
+    padding: 6px 8px;
+  }
+
+  /* Page section: tighter padding */
+  .page-section {
+    padding: 16px 12px;
+  }
+
+  /* Page hero */
+  .page-hero {
+    padding: 28px 16px 22px;
+  }
+  .page-hero h1 {
+    font-size: 1.4rem;
+    gap: 8px;
+  }
+  .page-hero h1 svg {
+    width: 24px;
+    height: 24px;
+  }
+  .page-hero p {
+    font-size: 0.88rem;
+  }
+
+  /* Stats: 2 per row */
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    padding: 14px 10px;
+  }
+  .stat-card .stat-num {
+    font-size: clamp(0.9rem, 4vw, 1.6rem);
+  }
+  .stat-card .stat-label {
+    font-size: 0.7rem;
+  }
+
+  /* Cards: single column */
+  .cards-grid,
+  .quick-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Form: single column */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .form-card {
+    padding: 18px 14px;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  /* Tables: make scrollable horizontally */
+  .table-wrap {
+    border-radius: 10px;
+  }
+  table {
+    font-size: 0.78rem;
+    min-width: 560px;
+  }
+  th,
+  td {
+    padding: 9px 10px;
+  }
+
+  /* Buttons inside table cells */
+  .btn-sm {
+    padding: 5px 9px;
+    font-size: 0.75rem;
+  }
+  .btn-sm svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Recent grid: single column */
+  .recent-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Modal: full width on mobile */
+  .modal {
+    padding: 22px 16px;
+    width: 98%;
+  }
+  .modal-actions {
+    flex-direction: column;
+  }
+  .modal-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Edit modal form */
+  #editModal .modal {
+    max-width: 100%;
+  }
+
+  /* Footer: single column */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    padding: 28px 16px 16px;
+    gap: 24px;
+  }
+  .footer-bottom {
+    padding: 14px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .footer-bottom span {
+    font-size: 0.72rem;
+  }
+
+  /* Reminder banner */
+  .reminder-item {
+    padding: 10px 12px;
+  }
+
+  /* Listing cards: single column */
+  .listing-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Filter tabs: wrap and shrink */
+  .filter-tabs {
+    gap: 6px;
+  }
+  .filter-tab {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+
+  /* Government programme grid */
+  .prog-grid {
+    grid-template-columns: 1fr;
+  }
+  .season-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── TINY PHONES (400px and below) ── */
+@media (max-width: 400px) {
+  /* Stats: still 2 per row but tighter */
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .stat-card {
+    padding: 10px 8px;
+  }
+
+  /* Season grid: 1 column */
+  .season-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero font floor */
+  .page-hero h1 {
+    font-size: 1.2rem;
+  }
+
+  /* Nav username fully hidden */
+  #navUser {
+    display: none;
+  }
+}
+
+/* ==========================================================
+   HARVEST REMINDER BANNER
+   Shown at top of dashboard and crops page when a crop
+   is due within 14 days or overdue.
+   ========================================================== */
+
+#reminderBanner {
+  display: none; /* shown by JS when reminders exist */
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Individual reminder row */
+.reminder-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border);
+  border-left: 4px solid var(--green-mid); /* colour set dynamically by JS */
+  gap: 12px;
+}
+.reminder-item:last-child {
+  border-bottom: none;
+}
+
+.reminder-body {
+  flex: 1;
+}
+.reminder-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+}
+.reminder-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Dismiss X button */
+.reminder-dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 5px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.reminder-dismiss:hover {
+  background: #fdecea;
+  color: var(--danger);
+}
+
+/* ==========================================================
+   EDIT MODAL
+   Pre-filled form modal for editing existing records.
+   ========================================================== */
+
+#editModal .modal {
+  max-width: 640px;
+}
+
+#editModalTitle {
+  font-family: "Playfair Display", serif;
+  color: var(--green-deep);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#editModalTitle svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--green-mid);
+}

@@ -1,0 +1,7 @@
+/* ==========================================================
+   NAIJAFARM — workers.css
+   Styles specific to the Workers Records page.
+   ========================================================== */
+
+/* Payroll total gets gold highlight */
+#sWages { color: var(--gold) !important; }

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NaijaFarm — Animals Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/Css/style.css"/>
+  <link rel="stylesheet" href="/Css/animals.css"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#" onclick="goHome(event)"><span class="logo-icon icon"><i data-lucide="wheat"></i></span><span class="logo-name">NaijaFarm</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+    <li><a href="crops.html"><i data-lucide="sprout"></i> Crops</a></li>
+    <li><a href="animals.html" class="active"><i data-lucide="beef"></i> Animals</a></li>
+    <li><a href="workers.html"><i data-lucide="hard-hat"></i> Workers</a></li>
+    <li><a href="market.html"><i data-lucide="shopping-cart"></i> Market</a></li>
+    <li><a href="government.html"><i data-lucide="landmark"></i> Government</a></li>
+  </ul>
+  <div class="nav-right"><span id="navUser"><i data-lucide="user"></i> <span id="navUserName"></span></span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+    <button class="btn-signout" onclick="logout()"><i data-lucide="log-out"></i> Sign Out</button></div>
+</nav>
+
+<div class="page-hero">
+  <h1><i data-lucide="beef"></i> <span>Animals</span> Manager</h1>
+  <p>Track the age, health status, and details of all your livestock.</p>
+</div>
+
+<div class="page-section">
+
+  <!-- Species stat summary (rendered by animals.js) -->
+  <div class="stats-row" id="animalStats"></div>
+
+  <!-- Add animal form -->
+  <h2 class="section-title"><i data-lucide="plus-circle"></i> Add Animal</h2>
+  <div class="form-card">
+    <div class="form-row">
+      <div class="form-group"><label><i data-lucide="tag"></i> Name / ID *</label><input id="aName" placeholder="e.g. Bull #1, Mama Hen"/></div>
+      <div class="form-group"><label><i data-lucide="paw-print"></i> Species *</label>
+        <select id="aSpecies"><option value="">-- Select --</option>
+          <option>Cattle (Cow/Bull)</option><option>Goat</option><option>Sheep</option><option>Pig</option>
+          <option>Chicken (Broiler)</option><option>Chicken (Layer)</option><option>Turkey</option><option>Duck</option>
+          <option>Rabbit</option><option>Fish (Catfish)</option><option>Fish (Tilapia)</option><option>Snail</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label><i data-lucide="dna"></i> Breed</label><input id="aBreed" placeholder="e.g. Sokoto Gudali, WAD Goat"/></div>
+      <div class="form-group"><label><i data-lucide="calendar"></i> DOB / Acquired *</label><input id="aDob" type="date"/></div>
+      <div class="form-group"><label><i data-lucide="circle-dot"></i> Gender</label>
+        <select id="aGender"><option>Male</option><option>Female</option><option>Unknown</option></select>
+      </div>
+      <div class="form-group"><label><i data-lucide="heart-pulse"></i> Health Status</label>
+        <select id="aHealth"><option>Healthy</option><option>Sick</option><option>Under Treatment</option><option>Quarantined</option><option>Deceased</option></select>
+      </div>
+      <div class="form-group"><label><i data-lucide="banknote"></i> Purchase Price (&#8358;)</label><input id="aPrice" type="number" placeholder="e.g. 45000"/></div>
+      <div class="form-group"><label><i data-lucide="file-text"></i> Notes / Vaccinations</label><input id="aNotes" placeholder="Vaccination records, etc."/></div>
+    </div>
+    <button class="btn btn-primary" onclick="addAnimal()"><i data-lucide="plus"></i> Add Animal</button>
+  </div>
+
+  <!-- Animals table (rendered by animals.js) -->
+  <h2 class="section-title"><i data-lucide="list"></i> Livestock Records</h2>
+  <p class="section-sub">All animals with age and health status tracking.</p>
+  <div id="animalsList"></div>
+
+
+<!-- Edit record modal (populated dynamically by edit.js) -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <h2 id="editModalTitle">Edit Record</h2>
+    <div id="editFormWrap"></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeEditModal()">Cancel</button>
+      <button class="btn btn-gold" onclick="saveEdit()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save Changes
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="delModal">
+  <div class="modal">
+    <h2><i data-lucide="trash-2"></i> Remove Animal?</h2>
+    <p>This will permanently delete this animal record.</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeDelModal()">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()"><i data-lucide="trash-2"></i> Delete</button>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+
+<footer id="site-footer" class="site-footer"></footer>
+<script src="/Js/core.js"></script>
+<script src="/Js/edit.js"></script>
+<script src="/Js/reminders.js"></script>
+<script src="/Js/animals.js"></script>
+<script src="/Js/footer.js"></script>
+<script>
+  (function() {
+    const s = getSession();
+    if (s && s.name) { const el = document.getElementById('navUserName'); if (el) el.textContent = s.name; }
+  })();
+  lucide.createIcons();
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+/* ==========================================================
+   NAIJAFARM — crops.css
+   Styles specific to the Crops Tracker page (crops.html).
+   ========================================================== */
+
+/* Progress bar label above the bar */
+.progress-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}

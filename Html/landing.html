@@ -1,0 +1,1293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NaijaFarm Manager – Smart Farming for Nigeria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="/Css/landing.css">
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="top-nav">
+      <a class="logo" href="#">
+        <span
+          class="logo-icon"
+          style="display: inline-flex; align-items: center"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d4a017"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M2 22 16 8" />
+            <path
+              d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94z"
+            />
+            <path
+              d="M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94z"
+            />
+            <path
+              d="M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94z"
+            /></svg
+        ></span>
+        <span class="logo-text">NaijaFarm</span>
+      </a>
+      <div class="nav-cta">
+        <a href="#login" class="nav-link">Sign In</a>
+        <button class="btn-nav" onclick="scrollToLogin()">
+          Get Started Free
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-glow2"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"
+            />
+            <line x1="4" x2="4" y1="22" y2="15" />
+          </svg>
+          Built for Nigerian Farmers
+        </div>
+        <h1>Run Your Farm<br />the <em>Smart Way</em></h1>
+        <p>
+          NaijaFarm Manager helps you track crops, manage livestock, pay
+          workers, buy or sell land — all in one place. No wahala, no paperwork.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-hero btn-hero-primary" onclick="scrollToLogin()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="vertical-align: middle"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+            Start Managing My Farm
+          </button>
+          <button
+            class="btn-hero btn-hero-outline"
+            onclick="
+              document
+                .getElementById('features')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            See Features ↓
+          </button>
+        </div>
+      </div>
+
+      <!-- Mini dashboard preview -->
+      <div class="hero-visual">
+        <div class="dashboard-preview">
+          <div class="dp-bar">
+            <div class="dp-dot" style="background: #ff5f57"></div>
+            <div class="dp-dot" style="background: #ffbd2e"></div>
+            <div class="dp-dot" style="background: #28c840"></div>
+            <span class="dp-name">NaijaFarm Dashboard</span>
+          </div>
+          <div class="dp-body">
+            <div class="dp-stats">
+              <div class="dp-stat">
+                <div class="n">12</div>
+                <div class="l">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--green-mid)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M7 20h10" />
+                    <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+                    <path
+                      d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"
+                    />
+                    <path
+                      d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"
+                    />
+                  </svg>
+                  Crops
+                </div>
+              </div>
+              <div class="dp-stat">
+                <div class="n">34</div>
+                <div class="l">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--green-mid)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+                  </svg>
+                  Animals
+                </div>
+              </div>
+              <div class="dp-stat">
+                <div class="n">8</div>
+                <div class="l">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--green-mid)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                  Workers
+                </div>
+              </div>
+            </div>
+            <div class="dp-row">
+              <div>
+                <div class="t">Maize — North Field</div>
+                <div class="s">Planted 47 days ago · 1.5 ha</div>
+              </div>
+              <span class="dp-tag tag-g">Growing</span>
+            </div>
+            <div class="dp-row">
+              <div>
+                <div class="t">Sokoto Gudali Bull</div>
+                <div class="s">Age: 2 yrs 3 mo · Healthy</div>
+              </div>
+              <span class="dp-tag tag-g">Healthy</span>
+            </div>
+            <div class="dp-row">
+              <div>
+                <div class="t">Emeka Okonkwo</div>
+                <div class="s">Farm Hand · 8 months tenure</div>
+              </div>
+              <span class="dp-tag tag-y">Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAND -->
+    <div class="stats-band">
+      <div class="stats-band-inner">
+        <div class="stat-item">
+          <div class="num">5</div>
+          <div class="lbl">Powerful Modules</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">36+</div>
+          <div class="lbl">Nigerian States Covered</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">8</div>
+          <div class="lbl">FGN Programmes Listed</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">100%</div>
+          <div class="lbl">Free to Use</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div id="features">
+      <div class="section">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">
+          Everything Your Farm<br /><em>Needs in One App</em>
+        </h2>
+        <p class="section-sub">
+          From planting to harvest, from livestock to land sales — NaijaFarm
+          covers every corner of your farm operations.
+        </p>
+
+        <div class="features-grid">
+          <div class="feat-card fade-in">
+            <div class="feat-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 20h10" />
+                <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+                <path
+                  d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"
+                />
+                <path
+                  d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"
+                />
+              </svg>
+            </div>
+            <h3>Crops Tracker</h3>
+            <p>
+              Record planting dates and watch a live progress bar count down to
+              harvest. Track cassava, maize, yam, rice, vegetables and more
+              across multiple fields.
+            </p>
+          </div>
+          <div class="feat-card fade-in delay-1">
+            <div class="feat-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                <line x1="6" x2="6" y1="1" y2="4" />
+                <line x1="10" x2="10" y1="1" y2="4" />
+                <line x1="14" x2="14" y1="1" y2="4" />
+              </svg>
+            </div>
+            <h3>Livestock Manager</h3>
+            <p>
+              Track every cow, goat, sheep, poultry bird and fish by age, breed,
+              health status and purchase price. Know exactly what you own at any
+              time.
+            </p>
+          </div>
+          <div class="feat-card fade-in delay-2">
+            <div class="feat-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3>Worker Records</h3>
+            <p>
+              Manage all your farm hands, supervisors and drivers. Track wages,
+              roles, tenure, state of origin and automatically calculate your
+              monthly payroll.
+            </p>
+          </div>
+          <div class="feat-card fade-in delay-3">
+            <div class="feat-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="8" cy="21" r="1" />
+                <circle cx="19" cy="21" r="1" />
+                <path
+                  d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+                />
+              </svg>
+            </div>
+            <h3>Farm Market</h3>
+            <p>
+              Post listings to buy or sell farm land, livestock, tractors, and
+              equipment. Filter by category and contact sellers directly by
+              phone.
+            </p>
+          </div>
+          <div class="feat-card fade-in">
+            <div class="feat-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="3" x2="21" y1="22" y2="22" />
+                <line x1="6" x2="6" y1="18" y2="11" />
+                <line x1="10" x2="10" y1="18" y2="11" />
+                <line x1="14" x2="14" y1="18" y2="11" />
+                <line x1="18" x2="18" y1="18" y2="11" />
+                <polygon points="12 2 20 7 4 7" />
+              </svg>
+            </div>
+            <h3>Government Support</h3>
+            <p>
+              Browse active FGN agricultural programmes — ABP, fertilizer
+              subsidies, youth grants and insurance. Get personalized
+              recommendations based on your state and farm type.
+            </p>
+          </div>
+          <div class="feat-card fade-in delay-1">
+            <div class="feat-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" x2="12" y1="15" y2="3" />
+              </svg>
+            </div>
+            <h3>Works Offline</h3>
+            <p>
+              All your data is saved directly in your browser. No internet
+              needed after setup, no subscription fees, no server — your records
+              stay with you.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div
+      style="
+        background: var(--cream2);
+        border-top: 1.5px solid var(--border);
+        border-bottom: 1.5px solid var(--border);
+      "
+    >
+      <div class="section">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">Simple as <em>ABC</em></h2>
+        <p class="section-sub">
+          Get started in minutes. No technical knowledge required — if you can
+          use a phone, you can use NaijaFarm.
+        </p>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>Create Your Account</h3>
+            <p>
+              Sign up with a username and password. It takes less than 30
+              seconds — no email or phone number needed.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Add Your Farm Data</h3>
+            <p>
+              Enter your crops, animals, workers and market listings. The app
+              guides you through every step clearly.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Track Everything</h3>
+            <p>
+              Watch crop ages and harvest countdowns update daily. See your
+              payroll, animal health, and market listings all in one dashboard.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <h3>Access Government Help</h3>
+            <p>
+              Use the eligibility checker to find FGN grants, subsidies and
+              extension services that apply to your specific farm and state.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIN / REGISTER -->
+    <div id="login" class="login-section">
+      <div class="login-wrap">
+        <div class="login-left">
+          <span class="section-label">Get Started</span>
+          <h2>Your Farm,<br /><em>Your Control</em></h2>
+          <p>
+            Join NaijaFarm Manager today — completely free. Your data is stored
+            safely in your browser and never shared with anyone.
+          </p>
+          <ul class="login-perks">
+            <li>Track unlimited crops and animals</li>
+            <li>Manage your full worker payroll</li>
+            <li>Post and browse farm market listings</li>
+            <li>Access FGN agricultural programmes</li>
+            <li>Works on phone, tablet and desktop</li>
+          </ul>
+        </div>
+
+        <div class="login-card">
+          <h3>Welcome to NaijaFarm</h3>
+          <p class="sub">Sign in or create a new account below</p>
+
+          <div class="login-tabs">
+            <button
+              class="login-tab active"
+              id="tabLogin"
+              onclick="switchTab('login')"
+            >
+              Sign In
+            </button>
+            <button
+              class="login-tab"
+              id="tabRegister"
+              onclick="switchTab('register')"
+            >
+              Register
+            </button>
+          </div>
+
+          <div id="errorMsg" class="error-msg"></div>
+
+          <!-- LOGIN FORM -->
+          <div id="loginForm">
+            <div class="form-group">
+              <label>Username</label>
+              <input
+                id="loginUser"
+                type="text"
+                placeholder="Enter your username"
+              />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input
+                id="loginPass"
+                type="password"
+                placeholder="Enter your password"
+              />
+            </div>
+            <button class="btn-login" onclick="doLogin()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="vertical-align: middle"
+              >
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                <polyline points="10 17 15 12 10 7" />
+                <line x1="15" x2="3" y1="12" y2="12" />
+              </svg>
+              Sign In to My Farm
+            </button>
+            <p class="login-note">
+              Don't have an account? Click <strong>Register</strong> above.
+            </p>
+          </div>
+
+          <!-- REGISTER FORM -->
+          <div id="registerForm" style="display: none">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input
+                id="regName"
+                type="text"
+                placeholder="e.g. Chukwuemeka Obi"
+              />
+            </div>
+            <div class="form-group">
+              <label>Username *</label>
+              <input id="regUser" type="text" placeholder="Choose a username" />
+            </div>
+            <div class="form-group">
+              <label>Password *</label>
+              <input
+                id="regPass"
+                type="password"
+                placeholder="Choose a password (min 4 chars)"
+              />
+            </div>
+            <div class="form-group">
+              <label>Confirm Password *</label>
+              <input
+                id="regPass2"
+                type="password"
+                placeholder="Repeat your password"
+              />
+            </div>
+            <button class="btn-login" onclick="doRegister()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="vertical-align: middle"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <line x1="19" x2="19" y1="8" y2="14" />
+                <line x1="22" x2="16" y1="11" y2="11" />
+              </svg>
+              Create My Account
+            </button>
+            <p class="login-note">
+              Already have an account? Click <strong>Sign In</strong> above.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      style="
+        background: var(--green-deep);
+        color: rgba(255, 255, 255, 0.7);
+        padding: 0;
+        font-family: &quot;DM Sans&quot;, sans-serif;
+      "
+    >
+      <!-- Main footer body -->
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 48px 40px 32px;
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1.2fr;
+          gap: 40px;
+        "
+      >
+        <!-- About -->
+        <div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 9px;
+              margin-bottom: 14px;
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#d4a017"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M2 22 16 8" />
+              <path
+                d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94z"
+              />
+              <path
+                d="M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94z"
+              />
+              <path
+                d="M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94z"
+              />
+            </svg>
+            <span
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                color: #d4a017;
+                font-size: 1.25rem;
+                font-weight: 900;
+              "
+              >NaijaFarm</span
+            >
+          </div>
+          <p
+            style="
+              font-size: 0.86rem;
+              line-height: 1.75;
+              opacity: 0.78;
+              max-width: 260px;
+            "
+          >
+            A free, all-in-one farm management system built specifically for
+            Nigerian farmers. Track crops, animals, workers, land and access
+            government support — all in one place. No internet needed after
+            setup.
+          </p>
+          <div style="display: flex; gap: 10px; margin-top: 18px">
+            <a
+              href="#"
+              style="
+                width: 34px;
+                height: 34px;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-size: 14px;
+                transition: background 0.2s;
+              "
+              title="Facebook"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="#fff"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                /></svg
+            ></a>
+            <a
+              href="#"
+              style="
+                width: 34px;
+                height: 34px;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-size: 14px;
+              "
+              title="WhatsApp"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="#fff"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+                />
+                <path
+                  d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.95-1.418A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 0 1-4.046-1.107l-.29-.172-3.007.862.842-3.093-.189-.302A7.946 7.946 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"
+                /></svg
+            ></a>
+            <a
+              href="#"
+              style="
+                width: 34px;
+                height: 34px;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-size: 14px;
+              "
+              title="X (Twitter)"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="#fff"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                /></svg
+            ></a>
+            <a
+              href="mailto:hello@naijafarm.ng"
+              style="
+                width: 34px;
+                height: 34px;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                font-size: 14px;
+              "
+              title="Email"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg
+            ></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4
+            style="
+              color: #d4a017;
+              font-size: 0.8rem;
+              font-weight: 700;
+              letter-spacing: 0.8px;
+              text-transform: uppercase;
+              margin-bottom: 16px;
+            "
+          >
+            Quick Links
+          </h4>
+          <ul
+            style="
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+            "
+          >
+            <li>
+              <a
+                href="index.html"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="7" height="9" x="3" y="3" rx="1" />
+                  <rect width="7" height="5" x="14" y="3" rx="1" />
+                  <rect width="7" height="9" x="14" y="12" rx="1" />
+                  <rect width="7" height="5" x="3" y="16" rx="1" />
+                </svg>
+                Dashboard</a
+              >
+            </li>
+            <li>
+              <a
+                href="crops.html"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 20h10" />
+                  <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+                  <path
+                    d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"
+                  />
+                  <path
+                    d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"
+                  />
+                </svg>
+                Crops Tracker</a
+              >
+            </li>
+            <li>
+              <a
+                href="animals.html"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                  <line x1="6" x2="6" y1="1" y2="4" />
+                  <line x1="10" x2="10" y1="1" y2="4" />
+                  <line x1="14" x2="14" y1="1" y2="4" />
+                </svg>
+                Animals</a
+              >
+            </li>
+            <li>
+              <a
+                href="workers.html"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                Workers</a
+              >
+            </li>
+            <li>
+              <a
+                href="market.html"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="8" cy="21" r="1" />
+                  <circle cx="19" cy="21" r="1" />
+                  <path
+                    d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+                  />
+                </svg>
+                Market</a
+              >
+            </li>
+            <li>
+              <a
+                href="government.html"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="3" x2="21" y1="22" y2="22" />
+                  <line x1="6" x2="6" y1="18" y2="11" />
+                  <line x1="10" x2="10" y1="18" y2="11" />
+                  <line x1="14" x2="14" y1="18" y2="11" />
+                  <line x1="18" x2="18" y1="18" y2="11" />
+                  <polygon points="12 2 20 7 4 7" />
+                </svg>
+                Govt Support</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Government Agencies -->
+        <div>
+          <h4
+            style="
+              color: #d4a017;
+              font-size: 0.8rem;
+              font-weight: 700;
+              letter-spacing: 0.8px;
+              text-transform: uppercase;
+              margin-bottom: 16px;
+            "
+          >
+            Govt Agencies
+          </h4>
+          <ul
+            style="
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+            "
+          >
+            <li>
+              <a
+                href="https://fma.gov.ng"
+                target="_blank"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                >FMA&amp;RD ↗</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://cbn.gov.ng"
+                target="_blank"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                >CBN (ABP) ↗</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://nafdac.gov.ng"
+                target="_blank"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                >NAFDAC ↗</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://naic.gov.ng"
+                target="_blank"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                >NAIC ↗</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://bankofagriculture.gov.ng"
+                target="_blank"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                >Bank of Agric ↗</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://iita.org"
+                target="_blank"
+                style="
+                  color: rgba(255, 255, 255, 0.72);
+                  text-decoration: none;
+                  font-size: 0.87rem;
+                "
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                >IITA ↗</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4
+            style="
+              color: #d4a017;
+              font-size: 0.8rem;
+              font-weight: 700;
+              letter-spacing: 0.8px;
+              text-transform: uppercase;
+              margin-bottom: 16px;
+            "
+          >
+            Contact Us
+          </h4>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              font-size: 0.87rem;
+            "
+          >
+            <div style="display: flex; gap: 10px; align-items: flex-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d4a017"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0; margin-top: 2px"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span style="opacity: 0.78; line-height: 1.5"
+                >Abuja, FCT, Nigeria<br />Serving all 36 States + FCT</span
+              >
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d4a017"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <a
+                href="mailto:hello@naijafarm.ng"
+                style="color: rgba(255, 255, 255, 0.72); text-decoration: none"
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                >hello@naijafarm.ng</a
+              >
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d4a017"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+              <a
+                href="tel:+2348000000000"
+                style="color: rgba(255, 255, 255, 0.72); text-decoration: none"
+                onmouseover="this.style.color = '#d4a017'"
+                onmouseout="this.style.color = 'rgba(255,255,255,0.72)'"
+                >+234 800 000 0000</a
+              >
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d4a017"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                <path d="M12 18h.01" />
+              </svg>
+              <span style="opacity: 0.78">WhatsApp support available</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div
+        style="
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          max-width: 1200px;
+          margin: 0 auto;
+        "
+      ></div>
+
+      <!-- Bottom bar -->
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 18px 40px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 10px;
+        "
+      >
+        <span style="font-size: 0.82rem; opacity: 0.6"
+          >&copy; 2025 NaijaFarm Manager. All rights reserved. Data is stored
+          locally in your browser — we never collect or share your
+          information.</span
+        >
+        <div style="display: flex; gap: 18px">
+          <span style="font-size: 0.82rem; opacity: 0.55"
+            >Made with
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="#d4a017"
+              stroke="#d4a017"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="vertical-align: middle"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            for <span style="color: #d4a017">Nigerian Farmers</span></span
+          >
+        </div>
+      </div>
+    </footer>
+    <script src="/Js/landing.js"></script>
+  </body>
+</html>

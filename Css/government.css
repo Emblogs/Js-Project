@@ -1,0 +1,90 @@
+/* ==========================================================
+   NAIJAFARM — government.css
+   Styles specific to the Government Support page.
+   ========================================================== */
+
+/* Programme cards grid */
+.prog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+/* Individual programme card */
+.prog-card {
+  background: linear-gradient(135deg, #002e00 0%, #1a5219 100%);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  color: var(--white);
+  border: 1.5px solid #2d7a2d;
+}
+.prog-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--gold); color: var(--green-deep);
+  font-size: 0.7rem; font-weight: 700;
+  padding: 2px 9px; border-radius: 20px; margin-bottom: 10px;
+}
+.prog-badge svg { width: 10px; height: 10px; stroke: var(--green-deep); }
+.prog-card h3   { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--gold-light); margin-bottom: 7px; }
+.prog-card p    { font-size: 0.84rem; opacity: 0.88; line-height: 1.65; }
+.prog-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 12px; background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 5px 12px; border-radius: 6px;
+  font-size: 0.8rem; color: var(--white);
+  text-decoration: none; transition: background 0.2s;
+}
+.prog-link:hover { background: rgba(255,255,255,0.2); }
+.prog-link svg { width: 12px; height: 12px; stroke: var(--white); }
+
+/* Recommendation items */
+.rec-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: var(--shadow);
+}
+.rec-icon { flex-shrink: 0; }
+.rec-icon svg { width: 24px; height: 24px; stroke: var(--green-mid); }
+.rec-body h4 { font-family: 'Playfair Display', serif; color: var(--green-deep); margin-bottom: 4px; font-size: 0.95rem; }
+.rec-body p  { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+/* Planting calendar grid */
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 13px;
+  margin-bottom: 32px;
+}
+.season-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 15px;
+  box-shadow: var(--shadow);
+}
+.season-card .month { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--green-deep); font-weight: 700; margin-bottom: 6px; }
+.season-card .crops-list { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+
+/* Contact cards grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.contact-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.contact-card h4 { font-family: 'Playfair Display', serif; color: var(--green-deep); margin-bottom: 7px; display: flex; align-items: center; gap: 7px; }
+.contact-card h4 svg { width: 16px; height: 16px; stroke: var(--green-mid); }
+.contact-card p  { font-size: 0.84rem; color: var(--text-muted); }
+.contact-card a  { color: var(--green-mid); font-weight: 600; text-decoration: none; }

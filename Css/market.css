@@ -1,0 +1,55 @@
+/* ==========================================================
+   NAIJAFARM — market.css
+   Styles specific to the Farm Market page.
+   ========================================================== */
+
+/* Listing cards grid */
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+/* Individual listing card */
+.listing-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.listing-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+/* Icon display area at top of card */
+.listing-img {
+  height: 110px;
+  background: linear-gradient(135deg, var(--green-mid), var(--green-deep));
+  display: flex; align-items: center; justify-content: center;
+}
+.listing-img svg { width: 48px; height: 48px; stroke: rgba(255,255,255,0.85); }
+
+.listing-body    { padding: 16px 15px; }
+.listing-title   { font-size: 0.95rem; font-weight: 600; margin: 6px 0 3px; color: var(--text-dark); }
+.listing-price   { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--green-deep); font-weight: 900; }
+.listing-meta    { font-size: 0.79rem; color: var(--text-muted); margin: 6px 0 8px; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.listing-meta svg { width: 12px; height: 12px; stroke: var(--text-muted); }
+.listing-details { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+
+/* Category filter tabs */
+.filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-tab {
+  padding: 8px 18px; border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--white); cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600; font-size: 0.86rem;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.filter-tab svg { width: 14px; height: 14px; stroke: currentColor; }
+.filter-tab.active { background: var(--green-deep); color: var(--white); border-color: var(--green-deep); }
+.filter-tab:hover:not(.active) { border-color: var(--green-mid); color: var(--green-mid); }

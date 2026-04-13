@@ -1,0 +1,7 @@
+/* ==========================================================
+   NAIJAFARM — animals.css
+   Styles specific to the Animals Manager page.
+   ========================================================== */
+
+/* Species stat cards have slightly larger icons */
+#animalStats .stat-icon svg { width: 28px; height: 28px; }
