@@ -2,23 +2,23 @@
    NAIJAFARM — workers.js
    Logic for the Worker Records page.
    Handles: staff directory, payroll totals, add/delete.
-   ========================================================== */
+  */
 
 let deleteId = null;
 
 
-/* ----------------------------------------------------------
+/* 
    EMPLOYMENT STATUS BADGE
-   ---------------------------------------------------------- */
+    */
 function statusBadge(s) {
   const map = { Active: 'badge-green', 'On Leave': 'badge-gold', Resigned: 'badge-red', Terminated: 'badge-red' };
   return `<span class="badge ${map[s] || 'badge-gold'}">${s}</span>`;
 }
 
 
-/* ----------------------------------------------------------
+/* 
    ADD WORKER
-   ---------------------------------------------------------- */
+    */
 function addWorker() {
   const name  = document.getElementById('wName').value.trim();
   const role  = document.getElementById('wRole').value;
@@ -48,9 +48,9 @@ function addWorker() {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    DELETE MODAL
-   ---------------------------------------------------------- */
+    */
 function openDelModal(id)  { deleteId = id; document.getElementById('delModal').classList.add('open'); }
 function closeDelModal()   { deleteId = null; document.getElementById('delModal').classList.remove('open'); }
 function confirmDelete() {
@@ -61,10 +61,10 @@ function confirmDelete() {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    RENDER
    Updates stat cards and the staff directory table.
-   ---------------------------------------------------------- */
+    */
 function render() {
   const workers = DB.get('workers');
   const active  = workers.filter(w => w.status === 'Active');

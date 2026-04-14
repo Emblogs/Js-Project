@@ -1,16 +1,16 @@
-/* ==========================================================
+/* 
    NAIJAFARM MANAGER — core.js
    Shared utility functions used across all pages.
    Handles: localStorage DB, toasts, age calculation,
             currency formatting, date formatting, ID gen.
-   ========================================================== */
+    */
 
 
-/* ----------------------------------------------------------
+/*
    DATABASE HELPERS
    Thin wrapper around localStorage for typed read/write.
    All keys are prefixed with "nfm_" to avoid collisions.
-   ---------------------------------------------------------- */
+    */
 const DB = {
   /* Read an array from storage (returns [] if missing/corrupt) */
   get(key) {
@@ -29,10 +29,10 @@ const DB = {
 };
 
 
-/* ----------------------------------------------------------
+/* 
    TOAST NOTIFICATIONS
    Shows a temporary bottom-right message. Auto-removes after 3.2s.
-   ---------------------------------------------------------- */
+    */
 function showToast(msg, type = 'success') {
   const old = document.querySelector('.toast');
   if (old) old.remove();
@@ -44,10 +44,10 @@ function showToast(msg, type = 'success') {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    AGE CALCULATOR
    Returns { text: "2 yrs 3 mo", days: 820 } from a date string.
-   ---------------------------------------------------------- */
+   */
 function calcAge(dateStr) {
   if (!dateStr) return { text: 'N/A', days: 0 };
   const diff = Math.floor((new Date() - new Date(dateStr)) / 86400000);
@@ -59,34 +59,34 @@ function calcAge(dateStr) {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    CURRENCY FORMATTER — formats number as ₦45,000
-   ---------------------------------------------------------- */
+   */
 function formatNaira(n) {
   return '₦' + Number(n).toLocaleString('en-NG');
 }
 
 
-/* ----------------------------------------------------------
+/* 
    DATE FORMATTER — "12 Apr 2025"
-   ---------------------------------------------------------- */
+   */
 function formatDate(d) {
   if (!d) return 'N/A';
   return new Date(d).toLocaleDateString('en-NG', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
 
-/* ----------------------------------------------------------
+/* 
    UNIQUE ID GENERATOR — short alphanumeric string
-   ---------------------------------------------------------- */
+  */
 function uid() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 }
 
 
-/* ----------------------------------------------------------
+/* 
    SESSION HELPERS
-   ---------------------------------------------------------- */
+    */
 function getSession() {
   try { return JSON.parse(localStorage.getItem('nfm_session')); } catch { return null; }
 }
@@ -107,12 +107,12 @@ function requireAuth() {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    GO HOME
    Called when the nav logo is clicked inside the dashboard.
    - If logged in  → stay on dashboard (index.html)
    - If logged out → go to landing page
-   ---------------------------------------------------------- */
+    */
 function goHome(e) {
   e.preventDefault();
   const s = getSession();

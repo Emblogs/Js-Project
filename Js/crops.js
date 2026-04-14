@@ -1,16 +1,16 @@
-/* ==========================================================
+/* 
    NAIJAFARM — crops.js
    All logic for the Crops Tracker page.
    Handles: adding, deleting, rendering crop records.
-   ========================================================== */
+*/
 
 /* Track which record is pending deletion */
 let deleteId = null;
 
-/* ----------------------------------------------------------
+/* 
    STATUS BADGE HELPER
    Returns a colour-coded badge HTML string for a crop status.
-   ---------------------------------------------------------- */
+   */
 function statusBadge(s) {
   const map = {
     Growing: "badge-green",
@@ -21,11 +21,11 @@ function statusBadge(s) {
   return `<span class="badge ${map[s] || "badge-gold"}">${s}</span>`;
 }
 
-/* ----------------------------------------------------------
+/* 
    HARVEST COUNTDOWN
    Calculates days remaining to harvest and returns a badge.
    Returns empty string if harvestDays is not set.
-   ---------------------------------------------------------- */
+   */
 function getHarvestBadge(planted, harvestDays) {
   if (!harvestDays || !planted) return "";
 
@@ -124,9 +124,9 @@ function confirmDelete() {
   render();
 }
 
-/* ----------------------------------------------------------
+/* 
    RENDER — builds the crops table from stored data
-   ---------------------------------------------------------- */
+ */
 function render() {
   const crops = DB.get("crops");
   const el = document.getElementById("cropsList");

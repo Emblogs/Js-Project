@@ -1,8 +1,4 @@
-/* ==========================================================
-   NAIJAFARM — footer.js
-   Injects the shared site footer into any page that includes
-   this script. Call insertFooter() or it auto-runs.
-   ========================================================== */
+
 
 function insertFooter() {
   const target = document.getElementById('site-footer');
@@ -104,7 +100,7 @@ function insertFooter() {
   <div class="footer-bottom">
     <span>&copy; 2025 NaijaFarm Manager. All rights reserved. Your data stays on your device — never collected or shared.</span>
     <span class="footer-love">
-      Made with <i data-lucide="heart"></i> for Nigerian Farmers &nbsp;&#127475;&#127468;
+      Made mainly for Nigerian Farmers &nbsp;&#127475;&#127468;
     </span>
   </div>
   `;

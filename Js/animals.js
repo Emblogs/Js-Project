@@ -6,14 +6,14 @@
 
 let deleteId = null;
 
-/* ----------------------------------------------------------
+/* 
    SPECIES ICON MAP
    Maps each species to a Lucide icon name.
-   ---------------------------------------------------------- */
+    */
 const SPECIES_ICON = {
   'Cattle (Cow/Bull)': 'beef',
-  'Goat':              'rabbit',
-  'Sheep':             'rabbit',
+  'Goat':              'chevon',
+  'Sheep':             'mutton',
   'Pig':               'pig',
   'Chicken (Broiler)': 'bird',
   'Chicken (Layer)':   'bird',
@@ -27,9 +27,9 @@ const SPECIES_ICON = {
 };
 
 
-/* ----------------------------------------------------------
+/* 
    HEALTH STATUS BADGE
-   ---------------------------------------------------------- */
+    */
 function healthBadge(h) {
   const map = {
     'Healthy':         'badge-green',
@@ -42,9 +42,9 @@ function healthBadge(h) {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    ADD ANIMAL
-   ---------------------------------------------------------- */
+    */
 function addAnimal() {
   const name    = document.getElementById('aName').value.trim();
   const species = document.getElementById('aSpecies').value;
@@ -78,9 +78,9 @@ function addAnimal() {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    DELETE MODAL CONTROLS
-   ---------------------------------------------------------- */
+    */
 function openDelModal(id)  { deleteId = id; document.getElementById('delModal').classList.add('open'); }
 function closeDelModal()   { deleteId = null; document.getElementById('delModal').classList.remove('open'); }
 function confirmDelete() {
@@ -91,10 +91,10 @@ function confirmDelete() {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    RENDER STATS ROW
    Counts animals by species category and shows stat cards.
-   ---------------------------------------------------------- */
+    */
 function renderStats(animals) {
   const counts = {};
   animals.forEach(a => {
@@ -127,9 +127,9 @@ function renderStats(animals) {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    RENDER TABLE
-   ---------------------------------------------------------- */
+    */
 function render() {
   const animals = DB.get('animals');
   renderStats(animals);

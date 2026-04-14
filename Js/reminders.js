@@ -1,15 +1,15 @@
-/* ==========================================================
+/* 
    NAIJAFARM — reminders.js
    Harvest date reminder system.
    Checks crops on page load and after every render.
    Shows a banner if any crop is due within 14 days or overdue.
-   ========================================================== */
+   */
 
 
-/* ----------------------------------------------------------
+/* 
    CHECK HARVEST REMINDERS
    Safe to call at any time — waits for DOM element to exist.
-   ---------------------------------------------------------- */
+ */
 function checkHarvestReminders() {
   const bannerEl = document.getElementById('reminderBanner');
   if (!bannerEl) return; /* not on a page that has the banner */
@@ -72,9 +72,9 @@ function checkHarvestReminders() {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    DISMISS A REMINDER
-   ---------------------------------------------------------- */
+    */
 function dismissReminder(cropId) {
   var dismissed = DB.get('dismissed_reminders');
   if (dismissed.indexOf(cropId) === -1) {
@@ -86,9 +86,9 @@ function dismissReminder(cropId) {
 }
 
 
-/* ----------------------------------------------------------
+/* 
    AUTO-RUN on DOMContentLoaded
-   ---------------------------------------------------------- */
+    */
 document.addEventListener('DOMContentLoaded', function() {
   checkHarvestReminders();
 });

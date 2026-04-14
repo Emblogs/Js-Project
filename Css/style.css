@@ -29,9 +29,9 @@
   --radius: 14px;
 }
 
-/* ----------------------------------------------------------
+/* 
    RESET & BASE
-   ---------------------------------------------------------- */
+    */
 *,
 *::before,
 *::after {
@@ -51,10 +51,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ----------------------------------------------------------
+/* 
    LUCIDE ICON DEFAULTS
    All <i data-lucide="..."> icons are sized consistently.
-   ---------------------------------------------------------- */
+    */
 .icon {
   display: inline-flex;
   align-items: center;
@@ -79,9 +79,9 @@ body {
   height: 32px;
 }
 
-/* ----------------------------------------------------------
+/* 
    TOP NAVIGATION BAR
-   ---------------------------------------------------------- */
+    */
 nav {
   display: flex;
   align-items: center;
@@ -171,9 +171,9 @@ nav {
   stroke: var(--gold);
 }
 
-/* ----------------------------------------------------------
+/* 
    PAGE HERO BANNER (used on inner pages)
-   ---------------------------------------------------------- */
+    */
 .page-hero {
   background: linear-gradient(
     135deg,
@@ -218,18 +218,18 @@ nav {
   position: relative;
 }
 
-/* ----------------------------------------------------------
+/* 
    LAYOUT CONTAINERS
-   ---------------------------------------------------------- */
+    */
 .page-section {
   max-width: 1100px;
   margin: 0 auto;
   padding: 36px 28px;
 }
 
-/* ----------------------------------------------------------
+/* 
    SECTION HEADINGS
-   ---------------------------------------------------------- */
+    */
 .section-title {
   font-family: "Playfair Display", serif;
   font-size: 1.5rem;
@@ -250,9 +250,9 @@ nav {
   margin-bottom: 24px;
 }
 
-/* ----------------------------------------------------------
+/* 
    STAT CARDS ROW
-   ---------------------------------------------------------- */
+    */
 .stats-row {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -294,9 +294,9 @@ nav {
   margin-top: 4px;
 }
 
-/* ----------------------------------------------------------
+/* 
    FEATURE / INFO CARDS GRID
-   ---------------------------------------------------------- */
+    */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -340,9 +340,9 @@ nav {
   line-height: 1.55;
 }
 
-/* ----------------------------------------------------------
+/* 
    FORM CARD CONTAINER
-   ---------------------------------------------------------- */
+    */
 .form-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -376,9 +376,9 @@ nav {
   stroke: var(--green-mid);
 }
 
-/* ----------------------------------------------------------
+/* 
    INPUTS, SELECTS, TEXTAREAS
-   ---------------------------------------------------------- */
+    */
 input,
 select,
 textarea {
