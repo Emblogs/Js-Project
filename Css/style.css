@@ -83,64 +83,50 @@ body {
    TOP NAVIGATION BAR
    ---------------------------------------------------------- */
 nav {
-  background: var(--green-deep);
-  padding: 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  padding: 0 5%; /* Increases horizontal space */
+  height: 80px; /* Forces a consistent, larger height */
+  background: var(--green-deep);
+  color: white;
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo group */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
-}
-.nav-logo .logo-icon svg {
-  width: 28px;
-  height: 28px;
-  stroke: var(--gold);
-}
-.nav-logo .logo-name {
-  font-family: "Playfair Display", serif;
-  color: var(--gold);
-  font-size: 1.4rem;
-  font-weight: 900;
+  color: white;
 }
 
-/* Nav links list */
 .nav-links {
   display: flex;
-  gap: 4px;
   list-style: none;
+  gap: 25px; /* Gives links more room to breathe */
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
+
 .nav-links a {
-  color: rgba(255, 255, 255, 0.82);
-  text-decoration: none;
-  padding: 8px 13px;
-  border-radius: 8px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s;
 }
-.nav-links a svg {
-  width: 15px;
-  height: 15px;
-  stroke: currentColor;
-}
+
 .nav-links a:hover,
 .nav-links a.active {
-  background: rgba(212, 160, 23, 0.18);
-  color: var(--gold-light);
+  color: var(--gold);
 }
 
 /* Nav right side — username + logout */
@@ -716,10 +702,12 @@ tr:hover td {
   color: rgba(255, 255, 255, 0.7);
   font-family: "DM Sans", sans-serif;
   margin-top: 60px;
+  width: 100%;
+
 }
 .footer-grid {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 5000px;
+  margin: 0 ;
   padding: 48px 36px 28px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.2fr;
@@ -867,6 +855,13 @@ tr:hover td {
 }
 
 /* ----------------------------------------------------------
+   MOBILE NAV — hidden by default, shown only on small screens
+   ---------------------------------------------------------- */
+.mobile-nav {
+  display: none;
+}
+
+/* ----------------------------------------------------------
    RESPONSIVE BREAKPOINTS
    Three breakpoints:
      - Tablet:  max-width 960px
@@ -926,17 +921,17 @@ tr:hover td {
     font-size: 1.1rem;
   }
 
-  /* Show a compact mobile nav bar below the top nav */
+  /* Mobile bottom nav — fixed to bottom, only visible on small screens */
   .mobile-nav {
-    display: flex !important;
+    display: flex;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 99;
+    z-index: 200;
     background: var(--green-deep);
     border-top: 1px solid rgba(212, 160, 23, 0.25);
-    padding: 6px 0 8px;
+    padding: 6px 0 env(safe-area-inset-bottom, 8px);
     justify-content: space-around;
   }
   .mobile-nav a {
@@ -966,6 +961,11 @@ tr:hover td {
   /* Add bottom padding so content doesn't hide behind mobile nav */
   body {
     padding-bottom: 72px;
+  }
+
+  /* Push footer up so mobile nav doesn't cover it */
+  .site-footer {
+    margin-bottom: 64px;
   }
 
   /* Nav right: hide username text, keep toggle + signout */
@@ -1246,3 +1246,119 @@ tr:hover td {
   height: 20px;
   stroke: var(--green-mid);
 }
+
+/* ==========================================================
+   RESPONSIVE OVERRIDES (Mobile Fixes)
+   ========================================================== */
+
+@media screen and (max-width: 768px) {
+  /* Navigation Fix */
+  nav {
+    padding: 0 15px;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 10px;
+  }
+
+  .nav-links {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Grid Fix: Change 2 or 3 columns into 1 column */
+  .stats-row,
+  .form-row,
+  .quick-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Modal Fix: Make modals take full width on mobile */
+  .modal {
+    width: 95%;
+    margin: 10px;
+    padding: 20px;
+  }
+
+  /* Table Fix: Allow horizontal scrolling for crop lists */
+  .table-wrap {
+    overflow-x: auto;
+  }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .stats-row,
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .modal {
+    width: 95%;
+    margin: 10px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Make tables scrollable on small screens */
+  .table-wrap {
+    overflow-x: auto;
+    display: block;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr; /* Stacks columns on top of each other on phones */
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  nav {
+    height: auto;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 15px;
+    flex-wrap: wrap; /* Allows links to wrap to a new line on tiny phones */
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+}
+
+/* ==========================================================
+   FOOTER FULL-WIDTH FIX
+   ========================================================== */
+
+
+

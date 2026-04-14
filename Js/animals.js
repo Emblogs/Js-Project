@@ -183,9 +183,14 @@ function render() {
                 <td>${healthBadge(a.health)}</td>
                 <td style="font-size:0.86rem;font-weight:600;color:var(--green-deep)">${a.price ? formatNaira(a.price) : '—'}</td>
                 <td>
-                  <button class="btn btn-danger btn-sm" onclick="openDelModal('${a.id}')">
-                    <i data-lucide="trash-2"></i>
-                  </button>
+                  <div style="display:flex; gap:5px;">
+                    <button class="btn btn-primary btn-sm" onclick="openEditModal('animals', '${a.id}')">
+                      <i data-lucide="edit-3"></i> Edit
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="openDelModal('${a.id}')">
+                      <i data-lucide="trash-2"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>`;
           }).join('')}

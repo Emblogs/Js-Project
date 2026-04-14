@@ -1,165 +1,388 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NaijaFarm &#8212; Government Support</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/Css/style.css"/>
-  <link rel="stylesheet" href="/Css/government.css"/>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-</head>
-<body>
-<nav>
-  <a class="nav-logo" href="index.html"><span class="logo-icon icon"><i data-lucide="wheat"></i></span><span class="logo-name">NaijaFarm</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
-    <li><a href="crops.html"><i data-lucide="sprout"></i> Crops</a></li>
-    <li><a href="animals.html"><i data-lucide="beef"></i> Animals</a></li>
-    <li><a href="workers.html"><i data-lucide="hard-hat"></i> Workers</a></li>
-    <li><a href="market.html"><i data-lucide="shopping-cart"></i> Market</a></li>
-    <li><a href="government.html" class="active"><i data-lucide="landmark"></i> Government</a></li>
-  </ul>
-  <div class="nav-right"><span id="navUser"><i data-lucide="user"></i> <span id="navUserName"></span></span><button class="btn-signout" onclick="logout()"><i data-lucide="log-out"></i> Sign Out</button></div>
-</nav>
-<div class="page-hero">
-  <h1><i data-lucide="landmark"></i> <span>Government</span> Support</h1>
-  <p>Federal and State agricultural programmes, grants, subsidies, and recommendations for Nigerian farmers.</p>
-</div>
-
-<div class="page-section">
-
-  <!-- ELIGIBILITY CHECKER -->
-  <h2 class="section-title"><i data-lucide="search-check"></i> Check Your Eligibility</h2>
-  <p class="section-sub">Answer a few questions to get personalised government programme recommendations.</p>
-  <div class="form-card">
-    <div class="form-row">
-      <div class="form-group"><label><i data-lucide="map-pin"></i> Your State</label>
-        <select id="eState"><option value="">-- Select State --</option>
-          <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option>
-          <option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option>
-          <option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option>
-          <option>Ekiti</option><option>Enugu</option><option>FCT - Abuja</option><option>Gombe</option>
-          <option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option>
-          <option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option>
-          <option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option>
-          <option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option>
-          <option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
-        </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NaijaFarm &#8212; Government Support</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Css/style.css" />
+    <link rel="stylesheet" href="/Css/government.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a class="nav-logo" href="index.html"
+        ><span class="logo-icon icon"><i data-lucide="wheat"></i></span
+        ><span class="logo-name">NaijaFarm</span></a
+      >
+      <ul class="nav-links">
+        <li>
+          <a href="index.html"
+            ><i data-lucide="layout-dashboard"></i> Dashboard</a
+          >
+        </li>
+        <li>
+          <a href="crops.html"><i data-lucide="sprout"></i> Crops</a>
+        </li>
+        <li>
+          <a href="animals.html"><i data-lucide="beef"></i> Animals</a>
+        </li>
+        <li>
+          <a href="workers.html"><i data-lucide="hard-hat"></i> Workers</a>
+        </li>
+        <li>
+          <a href="market.html"><i data-lucide="shopping-cart"></i> Market</a>
+        </li>
+        <li>
+          <a href="government.html" class="active"
+            ><i data-lucide="landmark"></i> Government</a
+          >
+        </li>
+      </ul>
+      <div class="nav-right">
+        <span id="navUser"
+          ><i data-lucide="user"></i> <span id="navUserName"></span></span
+        ><button class="btn-signout" onclick="logout()">
+          <i data-lucide="log-out"></i> Sign Out
+        </button>
       </div>
-      <div class="form-group"><label><i data-lucide="sprout"></i> Primary Farming Activity</label>
-        <select id="eFarming"><option value="">-- Select --</option>
-          <option>Crop Farming (Cereals)</option><option>Crop Farming (Root &amp; Tuber)</option>
-          <option>Vegetable Farming</option><option>Tree Crop (Cocoa, Palm, Cashew)</option>
-          <option>Cattle Rearing</option><option>Small Ruminants (Goats/Sheep)</option>
-          <option>Poultry Farming</option><option>Fish Farming (Aquaculture)</option><option>Mixed Farming</option>
-        </select>
+    </nav>
+    <div class="page-hero">
+      <h1><i data-lucide="landmark"></i> <span>Government</span> Support</h1>
+      <p>
+        Federal and State agricultural programmes, grants, subsidies, and
+        recommendations for Nigerian farmers.
+      </p>
+    </div>
+
+    <div class="page-section">
+      <!-- ELIGIBILITY CHECKER -->
+      <h2 class="section-title">
+        <i data-lucide="search-check"></i> Check Your Eligibility
+      </h2>
+      <p class="section-sub">
+        Answer a few questions to get personalised government programme
+        recommendations.
+      </p>
+      <div class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label><i data-lucide="map-pin"></i> Your State</label>
+            <select id="eState">
+              <option value="">-- Select State --</option>
+              <option>Abia</option>
+              <option>Adamawa</option>
+              <option>Akwa Ibom</option>
+              <option>Anambra</option>
+              <option>Bauchi</option>
+              <option>Bayelsa</option>
+              <option>Benue</option>
+              <option>Borno</option>
+              <option>Cross River</option>
+              <option>Delta</option>
+              <option>Ebonyi</option>
+              <option>Edo</option>
+              <option>Ekiti</option>
+              <option>Enugu</option>
+              <option>FCT - Abuja</option>
+              <option>Gombe</option>
+              <option>Imo</option>
+              <option>Jigawa</option>
+              <option>Kaduna</option>
+              <option>Kano</option>
+              <option>Katsina</option>
+              <option>Kebbi</option>
+              <option>Kogi</option>
+              <option>Kwara</option>
+              <option>Lagos</option>
+              <option>Nasarawa</option>
+              <option>Niger</option>
+              <option>Ogun</option>
+              <option>Ondo</option>
+              <option>Osun</option>
+              <option>Oyo</option>
+              <option>Plateau</option>
+              <option>Rivers</option>
+              <option>Sokoto</option>
+              <option>Taraba</option>
+              <option>Yobe</option>
+              <option>Zamfara</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><i data-lucide="sprout"></i> Primary Farming Activity</label>
+            <select id="eFarming">
+              <option value="">-- Select --</option>
+              <option>Crop Farming (Cereals)</option>
+              <option>Crop Farming (Root &amp; Tuber)</option>
+              <option>Vegetable Farming</option>
+              <option>Tree Crop (Cocoa, Palm, Cashew)</option>
+              <option>Cattle Rearing</option>
+              <option>Small Ruminants (Goats/Sheep)</option>
+              <option>Poultry Farming</option>
+              <option>Fish Farming (Aquaculture)</option>
+              <option>Mixed Farming</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><i data-lucide="map"></i> Farm Size</label>
+            <select id="eFarmSize">
+              <option>Small (under 2 ha)</option>
+              <option>Medium (2-10 ha)</option>
+              <option>Large (10+ ha)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label
+              ><i data-lucide="users"></i> Are you a Youth Farmer?
+              (18-35)</label
+            >
+            <select id="eYouth">
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-gold" onclick="checkEligibility()">
+          <i data-lucide="search"></i> Get My Recommendations
+        </button>
       </div>
-      <div class="form-group"><label><i data-lucide="map"></i> Farm Size</label>
-        <select id="eFarmSize"><option>Small (under 2 ha)</option><option>Medium (2-10 ha)</option><option>Large (10+ ha)</option></select>
+
+      <!-- Recommendations output (shown after form submit) -->
+      <div id="recommendations" style="display: none; margin-bottom: 32px">
+        <h2 class="section-title">
+          <i data-lucide="check-circle"></i> Your Recommendations
+        </h2>
+        <div id="recList"></div>
       </div>
-      <div class="form-group"><label><i data-lucide="users"></i> Are you a Youth Farmer? (18-35)</label>
-        <select id="eYouth"><option>Yes</option><option>No</option></select>
+
+      <!-- FEDERAL PROGRAMMES -->
+      <h2 class="section-title">
+        <i data-lucide="flag"></i> Federal Government Programmes
+      </h2>
+      <p class="section-sub">
+        Active FGN programmes supporting Nigerian farmers in 2025.
+      </p>
+      <div class="prog-grid">
+        <div class="prog-card">
+          <div class="prog-badge"><i data-lucide="landmark"></i> FEDERAL</div>
+          <h3>Anchor Borrowers Programme (ABP)</h3>
+          <p>
+            CBN-backed loans for smallholder farmers cultivating key commodities
+            like rice, maize, wheat, and cotton. Repayable in-kind at harvest.
+          </p>
+          <a href="#" class="prog-link"
+            ><i data-lucide="external-link"></i> Apply via CBN / Your Bank</a
+          >
+        </div>
+        <div class="prog-card">
+          <div class="prog-badge"><i data-lucide="leaf"></i> FEDERAL</div>
+          <h3>Presidential Fertilizer Initiative (PFI)</h3>
+          <p>
+            Blended NPK and Urea fertilisers subsidised by FGN. Available
+            through ADP offices and licensed agro-dealers.
+          </p>
+          <a href="#" class="prog-link"
+            ><i data-lucide="external-link"></i> Visit your State ADP</a
+          >
+        </div>
+        <div class="prog-card">
+          <div class="prog-badge">
+            <i data-lucide="trending-up"></i> FEDERAL
+          </div>
+          <h3>National Agricultural Growth Scheme (NAGS)</h3>
+          <p>
+            Provides improved seeds, inputs, and extension services to boost
+            productivity. Targeting 5 million farmers nationally.
+          </p>
+          <a href="#" class="prog-link"
+            ><i data-lucide="external-link"></i> Contact FMA&amp;RD</a
+          >
+        </div>
+        <div class="prog-card">
+          <div class="prog-badge"><i data-lucide="users"></i> FEDERAL</div>
+          <h3>Youth in Agriculture (YAGEP)</h3>
+          <p>
+            Startup grants, training, land access, and mentorship for youth
+            farmers aged 18-35 across Nigeria.
+          </p>
+          <a href="#" class="prog-link"
+            ><i data-lucide="external-link"></i> Apply via FMYSD</a
+          >
+        </div>
+        <div class="prog-card">
+          <div class="prog-badge"><i data-lucide="banknote"></i> CBN</div>
+          <h3>AgriSME Fund (BOA)</h3>
+          <p>
+            Bank of Agriculture provides soft loans to registered agricultural
+            businesses at single-digit interest rates.
+          </p>
+          <a href="#" class="prog-link"
+            ><i data-lucide="external-link"></i> Apply at Bank of Agriculture</a
+          >
+        </div>
+        <div class="prog-card">
+          <div class="prog-badge"><i data-lucide="shield"></i> REGULATORY</div>
+          <h3>NAFDAC Certification</h3>
+          <p>
+            All processed food products for sale must comply with NAFDAC
+            standards. Registration required before commercial distribution.
+          </p>
+          <a href="https://nafdac.gov.ng" class="prog-link" target="_blank"
+            ><i data-lucide="external-link"></i> Visit nafdac.gov.ng</a
+          >
+        </div>
+        <div class="prog-card">
+          <div class="prog-badge">
+            <i data-lucide="shield-check"></i> INSURANCE
+          </div>
+          <h3>NAIS - Agricultural Insurance</h3>
+          <p>
+            NAIC provides crop and livestock insurance with subsidised premiums
+            for smallholder farmers registered with state ADPs.
+          </p>
+          <a href="#" class="prog-link"
+            ><i data-lucide="external-link"></i> Contact NAIC office</a
+          >
+        </div>
+        <div class="prog-card">
+          <div class="prog-badge">
+            <i data-lucide="book-open"></i> EXTENSION
+          </div>
+          <h3>ADP Extension Services</h3>
+          <p>
+            State ADPs provide free extension officers who visit farms, advise
+            on best practices, pest control, and input sourcing.
+          </p>
+          <a href="#" class="prog-link"
+            ><i data-lucide="external-link"></i> Contact your State ADP</a
+          >
+        </div>
+      </div>
+
+      <!-- PLANTING CALENDAR -->
+      <h2 class="section-title">
+        <i data-lucide="calendar"></i> Nigeria Planting Calendar
+      </h2>
+      <p class="section-sub">
+        Government-recommended planting months for major crops by season.
+      </p>
+      <div class="season-grid">
+        <div class="season-card">
+          <div class="month">Jan - Feb</div>
+          <div class="crops-list">
+            Dry Season Vegetables (Tomato, Pepper, Onion), Irrigated Wheat
+            (North)
+          </div>
+        </div>
+        <div class="season-card">
+          <div class="month">Mar - Apr</div>
+          <div class="crops-list">
+            Maize (South), Yam (Middle Belt), Groundnut (North)
+          </div>
+        </div>
+        <div class="season-card">
+          <div class="month">May - Jun</div>
+          <div class="crops-list">
+            Sorghum &amp; Millet (North), Rice (All zones), Cowpea
+          </div>
+        </div>
+        <div class="season-card">
+          <div class="month">Jul - Aug</div>
+          <div class="crops-list">Cassava (South), Soybean, Cocoyam</div>
+        </div>
+        <div class="season-card">
+          <div class="month">Sep - Oct</div>
+          <div class="crops-list">
+            2nd Season Maize, Vegetables (South), Cashew planting
+          </div>
+        </div>
+        <div class="season-card">
+          <div class="month">Nov - Dec</div>
+          <div class="crops-list">
+            Dry Season Tomato, Onion (Kano/Kaduna), Wheat (Borno, Kano)
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY CONTACTS -->
+      <h2 class="section-title">
+        <i data-lucide="phone"></i> Key Government Contacts
+      </h2>
+      <p class="section-sub">
+        Reach out to these agencies for support, registration, and grants.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4>
+            <i data-lucide="landmark"></i> Federal Ministry of Agriculture
+          </h4>
+          <p>
+            FMA&amp;RD oversees all national agricultural policies.<br /><a
+              href="#"
+              >fma.gov.ng</a
+            >
+            &middot; 09-2347000
+          </p>
+        </div>
+        <div class="contact-card">
+          <h4><i data-lucide="banknote"></i> Bank of Agriculture (BOA)</h4>
+          <p>
+            Loans and financial support to farmers.<br /><a href="#"
+              >bankofagriculture.gov.ng</a
+            >
+          </p>
+        </div>
+        <div class="contact-card">
+          <h4><i data-lucide="flask-conical"></i> IITA Research Institute</h4>
+          <p>
+            Improved seeds and farming research. HQ: Ibadan.<br /><a href="#"
+              >iita.org</a
+            >
+          </p>
+        </div>
+        <div class="contact-card">
+          <h4><i data-lucide="shield"></i> NAFDAC</h4>
+          <p>
+            Regulatory compliance for farm produce.<br /><a href="#"
+              >nafdac.gov.ng</a
+            >
+          </p>
+        </div>
+        <div class="contact-card">
+          <h4><i data-lucide="shield-check"></i> NAIC (Agric Insurance)</h4>
+          <p>
+            Covers crop losses from floods, drought, pests.<br /><a href="#"
+              >naic.gov.ng</a
+            >
+          </p>
+        </div>
+        <div class="contact-card">
+          <h4><i data-lucide="building-2"></i> CBN (Anchor Borrowers)</h4>
+          <p>
+            Apply for ABP loans at any participating bank.<br /><a href="#"
+              >cbn.gov.ng</a
+            >
+          </p>
+        </div>
       </div>
     </div>
-    <button class="btn btn-gold" onclick="checkEligibility()"><i data-lucide="search"></i> Get My Recommendations</button>
-  </div>
-
-  <!-- Recommendations output (shown after form submit) -->
-  <div id="recommendations" style="display:none;margin-bottom:32px">
-    <h2 class="section-title"><i data-lucide="check-circle"></i> Your Recommendations</h2>
-    <div id="recList"></div>
-  </div>
-
-  <!-- FEDERAL PROGRAMMES -->
-  <h2 class="section-title"><i data-lucide="flag"></i> Federal Government Programmes</h2>
-  <p class="section-sub">Active FGN programmes supporting Nigerian farmers in 2025.</p>
-  <div class="prog-grid">
-    <div class="prog-card">
-      <div class="prog-badge"><i data-lucide="landmark"></i> FEDERAL</div>
-      <h3>Anchor Borrowers Programme (ABP)</h3>
-      <p>CBN-backed loans for smallholder farmers cultivating key commodities like rice, maize, wheat, and cotton. Repayable in-kind at harvest.</p>
-      <a href="#" class="prog-link"><i data-lucide="external-link"></i> Apply via CBN / Your Bank</a>
-    </div>
-    <div class="prog-card">
-      <div class="prog-badge"><i data-lucide="leaf"></i> FEDERAL</div>
-      <h3>Presidential Fertilizer Initiative (PFI)</h3>
-      <p>Blended NPK and Urea fertilisers subsidised by FGN. Available through ADP offices and licensed agro-dealers.</p>
-      <a href="#" class="prog-link"><i data-lucide="external-link"></i> Visit your State ADP</a>
-    </div>
-    <div class="prog-card">
-      <div class="prog-badge"><i data-lucide="trending-up"></i> FEDERAL</div>
-      <h3>National Agricultural Growth Scheme (NAGS)</h3>
-      <p>Provides improved seeds, inputs, and extension services to boost productivity. Targeting 5 million farmers nationally.</p>
-      <a href="#" class="prog-link"><i data-lucide="external-link"></i> Contact FMA&amp;RD</a>
-    </div>
-    <div class="prog-card">
-      <div class="prog-badge"><i data-lucide="users"></i> FEDERAL</div>
-      <h3>Youth in Agriculture (YAGEP)</h3>
-      <p>Startup grants, training, land access, and mentorship for youth farmers aged 18-35 across Nigeria.</p>
-      <a href="#" class="prog-link"><i data-lucide="external-link"></i> Apply via FMYSD</a>
-    </div>
-    <div class="prog-card">
-      <div class="prog-badge"><i data-lucide="banknote"></i> CBN</div>
-      <h3>AgriSME Fund (BOA)</h3>
-      <p>Bank of Agriculture provides soft loans to registered agricultural businesses at single-digit interest rates.</p>
-      <a href="#" class="prog-link"><i data-lucide="external-link"></i> Apply at Bank of Agriculture</a>
-    </div>
-    <div class="prog-card">
-      <div class="prog-badge"><i data-lucide="shield"></i> REGULATORY</div>
-      <h3>NAFDAC Certification</h3>
-      <p>All processed food products for sale must comply with NAFDAC standards. Registration required before commercial distribution.</p>
-      <a href="https://nafdac.gov.ng" class="prog-link" target="_blank"><i data-lucide="external-link"></i> Visit nafdac.gov.ng</a>
-    </div>
-    <div class="prog-card">
-      <div class="prog-badge"><i data-lucide="shield-check"></i> INSURANCE</div>
-      <h3>NAIS - Agricultural Insurance</h3>
-      <p>NAIC provides crop and livestock insurance with subsidised premiums for smallholder farmers registered with state ADPs.</p>
-      <a href="#" class="prog-link"><i data-lucide="external-link"></i> Contact NAIC office</a>
-    </div>
-    <div class="prog-card">
-      <div class="prog-badge"><i data-lucide="book-open"></i> EXTENSION</div>
-      <h3>ADP Extension Services</h3>
-      <p>State ADPs provide free extension officers who visit farms, advise on best practices, pest control, and input sourcing.</p>
-      <a href="#" class="prog-link"><i data-lucide="external-link"></i> Contact your State ADP</a>
-    </div>
-  </div>
-
-  <!-- PLANTING CALENDAR -->
-  <h2 class="section-title"><i data-lucide="calendar"></i> Nigeria Planting Calendar</h2>
-  <p class="section-sub">Government-recommended planting months for major crops by season.</p>
-  <div class="season-grid">
-    <div class="season-card"><div class="month">Jan - Feb</div><div class="crops-list">Dry Season Vegetables (Tomato, Pepper, Onion), Irrigated Wheat (North)</div></div>
-    <div class="season-card"><div class="month">Mar - Apr</div><div class="crops-list">Maize (South), Yam (Middle Belt), Groundnut (North)</div></div>
-    <div class="season-card"><div class="month">May - Jun</div><div class="crops-list">Sorghum &amp; Millet (North), Rice (All zones), Cowpea</div></div>
-    <div class="season-card"><div class="month">Jul - Aug</div><div class="crops-list">Cassava (South), Soybean, Cocoyam</div></div>
-    <div class="season-card"><div class="month">Sep - Oct</div><div class="crops-list">2nd Season Maize, Vegetables (South), Cashew planting</div></div>
-    <div class="season-card"><div class="month">Nov - Dec</div><div class="crops-list">Dry Season Tomato, Onion (Kano/Kaduna), Wheat (Borno, Kano)</div></div>
-  </div>
-
-  <!-- KEY CONTACTS -->
-  <h2 class="section-title"><i data-lucide="phone"></i> Key Government Contacts</h2>
-  <p class="section-sub">Reach out to these agencies for support, registration, and grants.</p>
-  <div class="contact-grid">
-    <div class="contact-card"><h4><i data-lucide="landmark"></i> Federal Ministry of Agriculture</h4><p>FMA&amp;RD oversees all national agricultural policies.<br><a href="#">fma.gov.ng</a> &middot; 09-2347000</p></div>
-    <div class="contact-card"><h4><i data-lucide="banknote"></i> Bank of Agriculture (BOA)</h4><p>Loans and financial support to farmers.<br><a href="#">bankofagriculture.gov.ng</a></p></div>
-    <div class="contact-card"><h4><i data-lucide="flask-conical"></i> IITA Research Institute</h4><p>Improved seeds and farming research. HQ: Ibadan.<br><a href="#">iita.org</a></p></div>
-    <div class="contact-card"><h4><i data-lucide="shield"></i> NAFDAC</h4><p>Regulatory compliance for farm produce.<br><a href="#">nafdac.gov.ng</a></p></div>
-    <div class="contact-card"><h4><i data-lucide="shield-check"></i> NAIC (Agric Insurance)</h4><p>Covers crop losses from floods, drought, pests.<br><a href="#">naic.gov.ng</a></p></div>
-    <div class="contact-card"><h4><i data-lucide="building-2"></i> CBN (Anchor Borrowers)</h4><p>Apply for ABP loans at any participating bank.<br><a href="#">cbn.gov.ng</a></p></div>
-  </div>
-
-</div>
-<footer id="site-footer" class="site-footer"></footer>
-<script src="/Js/core.js"></script>
-<script src="/Js/government.js"></script>
-<script src="/Js/footer.js"></script>
-<script>
-  (function() {
-    const s = getSession();
-    if (s && s.name) { const el = document.getElementById('navUserName'); if (el) el.textContent = s.name; }
-  })();
-  lucide.createIcons();
-</script>
-</body>
+    <footer id="site-footer" class="site-footer"></footer>
+    <script src="/Js/core.js"></script>
+    <script src="/Js/government.js"></script>
+    <script src="/Js/footer.js"></script>
+    <script>
+      (function () {
+        const s = getSession();
+        if (s && s.name) {
+          const el = document.getElementById("navUserName");
+          if (el) el.textContent = s.name;
+        }
+      })();
+      lucide.createIcons();
+    </script>
+  </body>
 </html>

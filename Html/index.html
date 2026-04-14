@@ -1,158 +1,320 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NaijaFarm Manager — Dashboard</title>
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <!-- Global + page CSS -->
-  <link rel="stylesheet" href="/Css/style.css"/>
-  <link rel="stylesheet" href="/Css/dashboard.css"/>
-  <!-- Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NaijaFarm Manager — Dashboard</title>
 
-<!-- ========== NAV ========== -->
-<nav>
-  <a class="nav-logo" href="#" onclick="goHome(event)">
-    <span class="logo-icon icon"><i data-lucide="wheat"></i></span>
-    <span class="logo-name">NaijaFarm</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
-    <li><a href="crops.html"><i data-lucide="sprout"></i> Crops</a></li>
-    <li><a href="animals.html"><i data-lucide="beef"></i> Animals</a></li>
-    <li><a href="workers.html"><i data-lucide="hard-hat"></i> Workers</a></li>
-    <li><a href="market.html"><i data-lucide="shopping-cart"></i> Market</a></li>
-    <li><a href="government.html"><i data-lucide="landmark"></i> Government</a></li>
-  </ul>
-  <div class="nav-right">
-    <span id="navUser"><i data-lucide="user"></i> <span id="navUserName"></span></span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-    </button>
-    <button class="btn-signout" onclick="logout()"><i data-lucide="log-out"></i> Sign Out</button>
-  </div>
-</nav>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- ========== HERO ========== -->
-<div class="page-hero">
-  <h1><i data-lucide="wheat"></i> Welcome to <span>NaijaFarm</span> Manager</h1>
-  <p>Your complete Nigerian farm management system — crops, animals, workers &amp; more.</p>
-</div>
+    <link rel="stylesheet" href="/Css/style.css" />
+    <link rel="stylesheet" href="/Css/dashboard.css" />
 
-<!-- ========== CONTENT ========== -->
-<div class="page-section">
-  <!-- Harvest reminder banner — shown by reminders.js when crops are due -->
-  <div id="reminderBanner"></div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a class="nav-logo" href="#" onclick="goHome(event)">
+        <span class="logo-icon icon"><i data-lucide="wheat"></i></span>
+        <span class="logo-name">NaijaFarm</span>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="index.html" class="active"
+            ><i data-lucide="layout-dashboard"></i> Dashboard</a
+          >
+        </li>
+        <li>
+          <a href="crops.html"><i data-lucide="sprout"></i> Crops</a>
+        </li>
+        <li>
+          <a href="animals.html"><i data-lucide="beef"></i> Animals</a>
+        </li>
+        <li>
+          <a href="workers.html"><i data-lucide="hard-hat"></i> Workers</a>
+        </li>
+        <li>
+          <a href="market.html"><i data-lucide="shopping-cart"></i> Market</a>
+        </li>
+        <li>
+          <a href="government.html"
+            ><i data-lucide="landmark"></i> Government</a
+          >
+        </li>
+      </ul>
+      <div class="nav-right">
+        <span id="navUser"
+          ><i data-lucide="user"></i> <span id="navUserName"></span
+        ></span>
+        <button class="btn-signout" onclick="logout()">
+          <i data-lucide="log-out"></i> Sign Out
+        </button>
+      </div>
+    </nav>
 
-  <!-- Stat summary cards -->
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-icon"><i data-lucide="sprout"></i></div>
-      <div class="stat-num" id="statCrops">0</div>
-      <div class="stat-label">Crops Tracked</div>
+    <div class="page-hero">
+      <h1>
+        <i data-lucide="wheat"></i> Welcome to <span>NaijaFarm</span> Manager
+      </h1>
+      <p>
+        Your complete Nigerian farm management system — crops, animals, workers
+        &amp; more.
+      </p>
     </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i data-lucide="beef"></i></div>
-      <div class="stat-num" id="statAnimals">0</div>
-      <div class="stat-label">Animals</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i data-lucide="hard-hat"></i></div>
-      <div class="stat-num" id="statWorkers">0</div>
-      <div class="stat-label">Workers</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i data-lucide="shopping-cart"></i></div>
-      <div class="stat-num" id="statListings">0</div>
-      <div class="stat-label">Market Listings</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i data-lucide="map"></i></div>
-      <div class="stat-num" id="statLand">0</div>
-      <div class="stat-label">Land Parcels</div>
-    </div>
-  </div>
 
-  <!-- Quick access links -->
-  <h2 class="section-title"><i data-lucide="zap"></i> Quick Access</h2>
-  <p class="section-sub">Jump to any section of your farm management system.</p>
-  <div class="quick-cards">
-    <a href="crops.html" class="quick-card">
-      <div class="card-icon-wrap"><i data-lucide="sprout"></i></div>
-      <h3>Crops Tracker</h3>
-      <p>Track planting dates, growth stages, and harvest timelines for your Nigerian crops.</p>
-    </a>
-    <a href="animals.html" class="quick-card">
-      <div class="card-icon-wrap"><i data-lucide="beef"></i></div>
-      <h3>Livestock Manager</h3>
-      <p>Monitor cattle, goats, sheep, poultry and fish — age, health &amp; breed.</p>
-    </a>
-    <a href="workers.html" class="quick-card">
-      <div class="card-icon-wrap"><i data-lucide="hard-hat"></i></div>
-      <h3>Worker Records</h3>
-      <p>Manage farm hands, wages, roles, and employment history all in one place.</p>
-    </a>
-    <a href="market.html" class="quick-card">
-      <div class="card-icon-wrap"><i data-lucide="shopping-cart"></i></div>
-      <h3>Buy &amp; Sell Market</h3>
-      <p>Post listings and browse land parcels and farm animals for sale.</p>
-    </a>
-    <a href="government.html" class="quick-card">
-      <div class="card-icon-wrap"><i data-lucide="landmark"></i></div>
-      <h3>Government Support</h3>
-      <p>Access FGN agricultural grants, subsidies, and extension services.</p>
-    </a>
-  </div>
+    <div class="page-section">
+      <div id="reminderBanner"></div>
 
-  <!-- Recent activity panels -->
-  <h2 class="section-title"><i data-lucide="clock"></i> Recent Activity</h2>
-  <p class="section-sub">A snapshot of your latest farm records.</p>
-  <div class="recent-grid">
-    <div class="recent-panel">
-      <div class="recent-panel-title"><i data-lucide="sprout"></i> Latest Crops</div>
-      <div id="recentCrops"></div>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon"><i data-lucide="sprout"></i></div>
+          <div class="stat-num" id="statCrops">0</div>
+          <div class="stat-label">Crops Tracked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i data-lucide="beef"></i></div>
+          <div class="stat-num" id="statAnimals">0</div>
+          <div class="stat-label">Animals</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i data-lucide="hard-hat"></i></div>
+          <div class="stat-num" id="statWorkers">0</div>
+          <div class="stat-label">Workers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i data-lucide="shopping-cart"></i></div>
+          <div class="stat-num" id="statListings">0</div>
+          <div class="stat-label">Market Listings</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i data-lucide="map"></i></div>
+          <div class="stat-num" id="statLand">0</div>
+          <div class="stat-label">Land Parcels</div>
+        </div>
+      </div>
+
+      <h2 class="section-title"><i data-lucide="zap"></i> Quick Access</h2>
+      <p class="section-sub">
+        Jump to any section of your farm management system.
+      </p>
+      <div class="quick-cards">
+        <a href="crops.html" class="quick-card">
+          <div class="card-icon-wrap"><i data-lucide="sprout"></i></div>
+          <h3>Crops Tracker</h3>
+          <p>
+            Track planting dates, growth stages, and harvest timelines for your
+            Nigerian crops.
+          </p>
+        </a>
+        <a href="animals.html" class="quick-card">
+          <div class="card-icon-wrap"><i data-lucide="beef"></i></div>
+          <h3>Livestock Manager</h3>
+          <p>
+            Monitor cattle, goats, sheep, poultry and fish — age, health &amp;
+            breed.
+          </p>
+        </a>
+        <a href="workers.html" class="quick-card">
+          <div class="card-icon-wrap"><i data-lucide="hard-hat"></i></div>
+          <h3>Worker Records</h3>
+          <p>
+            Manage farm hands, wages, roles, and employment history all in one
+            place.
+          </p>
+        </a>
+        <a href="market.html" class="quick-card">
+          <div class="card-icon-wrap"><i data-lucide="shopping-cart"></i></div>
+          <h3>Buy &amp; Sell Market</h3>
+          <p>
+            Post listings and browse land parcels and farm animals for sale.
+          </p>
+        </a>
+        <a href="government.html" class="quick-card">
+          <div class="card-icon-wrap"><i data-lucide="landmark"></i></div>
+          <h3>Government Support</h3>
+          <p>
+            Access FGN agricultural grants, subsidies, and extension services.
+          </p>
+        </a>
+      </div>
+
+      <h2 class="section-title"><i data-lucide="clock"></i> Recent Activity</h2>
+      <p class="section-sub">A snapshot of your latest farm records.</p>
+      <div class="recent-grid">
+        <div class="recent-panel">
+          <div class="recent-panel-title">
+            <i data-lucide="sprout"></i> Latest Crops
+          </div>
+          <div id="recentCrops"></div>
+        </div>
+        <div class="recent-panel">
+          <div class="recent-panel-title">
+            <i data-lucide="beef"></i> Latest Animals
+          </div>
+          <div id="recentAnimals"></div>
+        </div>
+      </div>
+
+      <div class="tip-banner">
+        <div class="tip-icon"><i data-lucide="lightbulb"></i></div>
+        <div>
+          <div class="tip-badge">NAIJA FARM TIP</div>
+          <h3 id="tipTitle">Loading tip…</h3>
+          <p id="tipBody"></p>
+        </div>
+      </div>
     </div>
-    <div class="recent-panel">
-      <div class="recent-panel-title"><i data-lucide="beef"></i> Latest Animals</div>
-      <div id="recentAnimals"></div>
-    </div>
-  </div>
 
-  <!-- Daily farming tip -->
-  <div class="tip-banner">
-    <div class="tip-icon"><i data-lucide="lightbulb"></i></div>
-    <div>
-      <div class="tip-badge">NAIJA FARM TIP</div>
-      <h3 id="tipTitle">Loading tip…</h3>
-      <p id="tipBody"></p>
-    </div>
-  </div>
+    <footer id="site-footer" class="site-footer"></footer>
 
-</div><!-- /.page-section -->
+    <script src="/Js/core.js"></script>
+    <script src="/Js/dashboard.js"></script>
+    <script src="/Js/edit.js"></script>
+    <script src="/Js/reminders.js"></script>
+    <script src="/Js/footer.js"></script>
+    <script>
+      /* Show username in nav after page loads */
+      (function () {
+        const s = getSession();
+        if (s && s.name) {
+          const el = document.getElementById("navUserName");
+          if (el) el.textContent = s.name;
+        }
+      })();
+      lucide.createIcons();
+    </script>
 
-<!-- ========== FOOTER (injected by JS) ========== -->
-<footer id="site-footer" class="site-footer"></footer>
-
-<!-- ========== SCRIPTS ========== -->
-<script src="/Js/core.js"></script>
-<script src="/Js/edit.js"></script>
-<script src="/Js/reminders.js"></script>
-<script src="/Js/dashboard.js"></script>
-<script src="/Js/footer.js"></script>
-<script>
-  /* Show username in nav after page loads */
-  (function() {
-    const s = getSession();
-    if (s && s.name) {
-      const el = document.getElementById('navUserName');
-      if (el) el.textContent = s.name;
-    }
-  })();
-  lucide.createIcons();
-</script>
-
-</body>
+    <nav class="mobile-nav">
+      <a href="index.html" id="mn_dashboard">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect width="7" height="9" x="3" y="3" rx="1" />
+          <rect width="7" height="5" x="14" y="3" rx="1" />
+          <rect width="7" height="9" x="14" y="12" rx="1" />
+          <rect width="7" height="5" x="3" y="16" rx="1" />
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="crops.html" id="mn_crops">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M7 20h10" />
+          <path d="M10 20c5.5-2.5.8-6.4 3-10" />
+          <path
+            d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"
+          />
+          <path
+            d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"
+          />
+        </svg>
+        <span>Crops</span>
+      </a>
+      <a href="animals.html" id="mn_animals">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+          <line x1="6" x2="6" y1="1" y2="4" />
+          <line x1="10" x2="10" y1="1" y2="4" />
+          <line x1="14" x2="14" y1="1" y2="4" />
+        </svg>
+        <span>Animals</span>
+      </a>
+      <a href="workers.html" id="mn_workers">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <span>Workers</span>
+      </a>
+      <a href="market.html" id="mn_market">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="8" cy="21" r="1" />
+          <circle cx="19" cy="21" r="1" />
+          <path
+            d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+          />
+        </svg>
+        <span>Market</span>
+      </a>
+      <a href="government.html" id="mn_govt">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" x2="21" y1="22" y2="22" />
+          <line x1="6" x2="6" y1="18" y2="11" />
+          <line x1="10" x2="10" y1="18" y2="11" />
+          <line x1="14" x2="14" y1="18" y2="11" />
+          <line x1="18" x2="18" y1="18" y2="11" />
+          <polygon points="12 2 20 7 4 7" />
+        </svg>
+        <span>Govt</span>
+      </a>
+    </nav>
+    <script>
+      /* Mark the current page active in the mobile bottom nav */
+      var el = document.getElementById("mn_dashboard");
+      if (el) el.classList.add("active");
+    </script>
+  </body>
 </html>

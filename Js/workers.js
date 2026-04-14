@@ -121,10 +121,15 @@ function render() {
               <td style="font-size:0.86rem;font-weight:600;color:var(--green-deep)">${w.wage ? formatNaira(w.wage) : '—'}</td>
               <td>${statusBadge(w.status)}</td>
               <td>
-                <button class="btn btn-danger btn-sm" onclick="openDelModal('${w.id}')">
-                  <i data-lucide="trash-2"></i>
-                </button>
-              </td>
+                  <div style="display:flex; gap:5px;">
+                    <button class="btn btn-primary btn-sm" onclick="openEditModal('workers', '${w.id}')">
+                      <i data-lucide="edit-3"></i> Edit
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="openDelModal('${w.id}')">
+                      <i data-lucide="trash-2"></i>
+                    </button>
+                  </div>
+                </td>
             </tr>`).join('')}
         </tbody>
       </table>

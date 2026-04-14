@@ -7,21 +7,19 @@
 /* Track which record is pending deletion */
 let deleteId = null;
 
-
 /* ----------------------------------------------------------
    STATUS BADGE HELPER
    Returns a colour-coded badge HTML string for a crop status.
    ---------------------------------------------------------- */
 function statusBadge(s) {
   const map = {
-    'Growing':   'badge-green',
-    'Harvested': 'badge-blue',
-    'Failed':    'badge-red',
-    'Dormant':   'badge-gold'
+    Growing: "badge-green",
+    Harvested: "badge-blue",
+    Failed: "badge-red",
+    Dormant: "badge-gold",
   };
-  return `<span class="badge ${map[s] || 'badge-gold'}">${s}</span>`;
+  return `<span class="badge ${map[s] || "badge-gold"}">${s}</span>`;
 }
-
 
 /* ----------------------------------------------------------
    HARVEST COUNTDOWN
@@ -29,101 +27,109 @@ function statusBadge(s) {
    Returns empty string if harvestDays is not set.
    ---------------------------------------------------------- */
 function getHarvestBadge(planted, harvestDays) {
-  if (!harvestDays || !planted) return '';
+  if (!harvestDays || !planted) return "";
 
   const harvestDate = new Date(planted);
   harvestDate.setDate(harvestDate.getDate() + parseInt(harvestDays));
 
   const daysLeft = Math.ceil((harvestDate - new Date()) / 86400000);
 
-  if (daysLeft < 0)  return `<span class="badge badge-blue">Overdue ${Math.abs(daysLeft)}d</span>`;
-  if (daysLeft === 0) return `<span class="badge badge-green">Harvest Today!</span>`;
+  if (daysLeft < 0)
+    return `<span class="badge badge-blue">Overdue ${Math.abs(daysLeft)}d</span>`;
+  if (daysLeft === 0)
+    return `<span class="badge badge-green">Harvest Today!</span>`;
   return `<span class="badge badge-gold">${daysLeft}d to harvest</span>`;
 }
 
-
-/* ----------------------------------------------------------
+/* 
    GROWTH PROGRESS PERCENTAGE
    Returns 0–100 based on how far through the growing cycle the crop is.
-   ---------------------------------------------------------- */
+    */
 function growthPercent(planted, harvestDays) {
   if (!harvestDays || !planted) return 0;
-  return Math.min(100, Math.round((calcAge(planted).days / parseInt(harvestDays)) * 100));
+  return Math.min(
+    100,
+    Math.round((calcAge(planted).days / parseInt(harvestDays)) * 100),
+  );
 }
 
-
-/* ----------------------------------------------------------
+/*
    ADD CROP
    Reads the form, validates, saves to DB, resets form, re-renders.
-   ---------------------------------------------------------- */
+   */
 function addCrop() {
-  const name    = document.getElementById('cName').value.trim();
-  const type    = document.getElementById('cType').value;
-  const planted = document.getElementById('cPlanted').value;
+  const name = document.getElementById("cName").value.trim();
+  const type = document.getElementById("cType").value;
+  const planted = document.getElementById("cPlanted").value;
 
   /* Basic validation */
   if (!name || !type || !planted) {
-    showToast('Please fill all required fields (*)', 'error');
+    showToast("Please fill all required fields (*)", "error");
     return;
   }
 
   /* Build record and save */
-  const crops = DB.get('crops');
+  const crops = DB.get("crops");
   crops.push({
-    id:          uid(),
+    id: uid(),
     name,
     type,
     planted,
-    harvestDays: document.getElementById('cHarvestDays').value || '',
-    location:    document.getElementById('cLocation').value,
-    plotSize:    document.getElementById('cPlotSize').value,
-    status:      document.getElementById('cStatus').value,
-    notes:       document.getElementById('cNotes').value,
-    createdAt:   new Date().toISOString()
+    harvestDays: document.getElementById("cHarvestDays").value || "",
+    location: document.getElementById("cLocation").value,
+    plotSize: document.getElementById("cPlotSize").value,
+    status: document.getElementById("cStatus").value,
+    notes: document.getElementById("cNotes").value,
+    createdAt: new Date().toISOString(),
   });
-  DB.set('crops', crops);
+  DB.set("crops", crops);
 
   showToast(`${name} added successfully!`);
 
   /* Reset form fields */
-  ['cName','cPlanted','cHarvestDays','cLocation','cPlotSize','cNotes'].forEach(id => {
-    document.getElementById(id).value = '';
+  [
+    "cName",
+    "cPlanted",
+    "cHarvestDays",
+    "cLocation",
+    "cPlotSize",
+    "cNotes",
+  ].forEach((id) => {
+    document.getElementById(id).value = "";
   });
-  document.getElementById('cType').value = '';
-  document.getElementById('cStatus').value = 'Growing';
+  document.getElementById("cType").value = "";
+  document.getElementById("cStatus").value = "Growing";
 
   render();
 }
 
-
-/* ----------------------------------------------------------
+/* 
    DELETE MODAL CONTROLS
-   ---------------------------------------------------------- */
+    */
 function openDelModal(id) {
   deleteId = id;
-  document.getElementById('delModal').classList.add('open');
+  document.getElementById("delModal").classList.add("open");
 }
 
 function closeDelModal() {
   deleteId = null;
-  document.getElementById('delModal').classList.remove('open');
+  document.getElementById("delModal").classList.remove("open");
 }
 
 function confirmDelete() {
-  const crops = DB.get('crops').filter(c => c.id !== deleteId);
-  DB.set('crops', crops);
+  const crops = DB.get("crops").filter((c) => c.id !== deleteId);
+  DB.set("crops", crops);
   closeDelModal();
-  showToast('Crop record deleted', 'error');
+  showToast("Crop record deleted", "error");
   render();
 }
-
 
 /* ----------------------------------------------------------
    RENDER — builds the crops table from stored data
    ---------------------------------------------------------- */
 function render() {
-  const crops = DB.get('crops');
-  const el    = document.getElementById('cropsList');
+  const crops = DB.get("crops");
+  const el = document.getElementById("cropsList");
 
   if (!crops.length) {
     el.innerHTML = `
@@ -151,17 +157,20 @@ function render() {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-          ${crops.slice().reverse().map(c => {
-            const age = calcAge(c.planted);
-            const pct = growthPercent(c.planted, c.harvestDays);
-            return `
+        <tbody> 
+          ${crops
+            .slice()
+            .reverse()
+            .map((c) => {
+              const age = calcAge(c.planted);
+              const pct = growthPercent(c.planted, c.harvestDays);
+              return `
               <tr>
                 <td>
                   <strong>${c.name}</strong>
-                  ${c.plotSize ? `<div style="font-size:0.76rem;color:var(--text-muted)">${c.plotSize} ha</div>` : ''}
+                  ${c.plotSize ? `<div style="font-size:0.76rem;color:var(--text-muted)">${c.plotSize} ha</div>` : ""}
                 </td>
-                <td style="font-size:0.83rem">${c.type.split(' (')[0]}</td>
+                <td style="font-size:0.83rem">${c.type.split(" (")[0]}</td>
                 <td style="font-size:0.83rem">${formatDate(c.planted)}</td>
                 <td><span class="badge badge-green">${age.text}</span></td>
                 <td style="min-width:100px">
@@ -169,22 +178,28 @@ function render() {
                   <div class="age-bar"><div class="age-bar-fill" style="width:${pct}%"></div></div>
                 </td>
                 <td>${getHarvestBadge(c.planted, c.harvestDays) || '<span style="color:var(--text-muted);font-size:0.8rem">—</span>'}</td>
-                <td style="font-size:0.83rem">${c.location || '—'}</td>
+                <td style="font-size:0.83rem">${c.location || "—"}</td>
                 <td>${statusBadge(c.status)}</td>
+                // Find this section in crops.js and update it:
                 <td>
-                  <button class="btn btn-danger btn-sm" onclick="openDelModal('${c.id}')">
-                    <i data-lucide="trash-2"></i> Delete
-                  </button>
+                  <div style="display:flex; gap:5px;">
+                    <button class="btn btn-primary btn-sm" onclick="openEditModal('crops', '${c.id}')">
+                      <i data-lucide="edit-3"></i> Edit
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="openDelModal('${c.id}')">
+                      <i data-lucide="trash-2"></i>
+                    </button>
+                  </div>
                 </td>
-              </tr>`;
-          }).join('')}
+              </tr>`; 
+            })
+            .join("")}
         </tbody>
       </table>
     </div>`;
 
   lucide.createIcons();
 }
-
 
 /* ----------------------------------------------------------
    INIT

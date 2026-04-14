@@ -174,10 +174,11 @@ function saveEdit() {
   DB.set(type, records);
 
   closeEditModal();
-  showToast(`${updated.name} updated successfully!`);
+  showToast(updated.name + ' updated successfully!');
 
-  /* Re-render the current page table */
+  /* Re-render table and refresh reminders */
   if (typeof render === 'function') render();
+  if (typeof checkHarvestReminders === 'function') checkHarvestReminders();
 }
 
 

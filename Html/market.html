@@ -1,105 +1,225 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NaijaFarm &#8212; Market</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/Css/style.css"/>
-  <link rel="stylesheet" href="/Css/market.css"/>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-</head>
-<body>
-<nav>
-  <a class="nav-logo" href="index.html"><span class="logo-icon icon"><i data-lucide="wheat"></i></span><span class="logo-name">NaijaFarm</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
-    <li><a href="crops.html"><i data-lucide="sprout"></i> Crops</a></li>
-    <li><a href="animals.html"><i data-lucide="beef"></i> Animals</a></li>
-    <li><a href="workers.html"><i data-lucide="hard-hat"></i> Workers</a></li>
-    <li><a href="market.html" class="active"><i data-lucide="shopping-cart"></i> Market</a></li>
-    <li><a href="government.html"><i data-lucide="landmark"></i> Government</a></li>
-  </ul>
-  <div class="nav-right"><span id="navUser"><i data-lucide="user"></i> <span id="navUserName"></span></span><button class="btn-signout" onclick="logout()"><i data-lucide="log-out"></i> Sign Out</button></div>
-</nav>
-<div class="page-hero">
-  <h1><i data-lucide="shopping-cart"></i> Farm <span>Market</span></h1>
-  <p>Buy and sell farm land, livestock, tractors, and equipment across Nigeria.</p>
-</div>
-
-<div class="page-section">
-
-  <!-- Post a new listing form -->
-  <h2 class="section-title"><i data-lucide="plus-circle"></i> Post a Listing</h2>
-  <div class="form-card">
-    <div class="form-row">
-      <div class="form-group"><label><i data-lucide="tag"></i> Listing Type *</label>
-        <select id="lType" onchange="toggleLandFields()">
-          <option value="">-- Select --</option>
-          <optgroup label="Animals">
-            <option>Cattle for Sale</option><option>Goats for Sale</option><option>Sheep for Sale</option>
-            <option>Pigs for Sale</option><option>Poultry (Broiler)</option><option>Poultry (Layers)</option>
-            <option>Fish Stock</option><option>Other Animals</option>
-          </optgroup>
-          <optgroup label="Land">
-            <option>Farm Land for Sale</option><option>Farm Land for Lease</option>
-          </optgroup>
-          <optgroup label="Equipment">
-            <option>Tractor for Sale</option><option>Farm Tools</option>
-            <option>Irrigation Equipment</option><option>Other Equipment</option>
-          </optgroup>
-        </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NaijaFarm &#8212; Market</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Css/style.css" />
+    <link rel="stylesheet" href="/Css/market.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a class="nav-logo" href="index.html"
+        ><span class="logo-icon icon"><i data-lucide="wheat"></i></span
+        ><span class="logo-name">NaijaFarm</span></a
+      >
+      <ul class="nav-links">
+        <li>
+          <a href="index.html"
+            ><i data-lucide="layout-dashboard"></i> Dashboard</a
+          >
+        </li>
+        <li>
+          <a href="crops.html"><i data-lucide="sprout"></i> Crops</a>
+        </li>
+        <li>
+          <a href="animals.html"><i data-lucide="beef"></i> Animals</a>
+        </li>
+        <li>
+          <a href="workers.html"><i data-lucide="hard-hat"></i> Workers</a>
+        </li>
+        <li>
+          <a href="market.html" class="active"
+            ><i data-lucide="shopping-cart"></i> Market</a
+          >
+        </li>
+        <li>
+          <a href="government.html"
+            ><i data-lucide="landmark"></i> Government</a
+          >
+        </li>
+      </ul>
+      <div class="nav-right">
+        <span id="navUser"
+          ><i data-lucide="user"></i> <span id="navUserName"></span></span
+        ><button class="btn-signout" onclick="logout()">
+          <i data-lucide="log-out"></i> Sign Out
+        </button>
       </div>
-      <div class="form-group"><label><i data-lucide="file-text"></i> Title / Description *</label><input id="lTitle" placeholder="e.g. 5 mature Sokoto Gudali cattle"/></div>
-      <div class="form-group"><label><i data-lucide="banknote"></i> Price (&#8358;) *</label><input id="lPrice" type="number" placeholder="e.g. 250000"/></div>
-      <div class="form-group"><label><i data-lucide="package"></i> Quantity / Size</label><input id="lQty" placeholder="e.g. 5 heads / 10 hectares"/></div>
-      <div class="form-group"><label><i data-lucide="map-pin"></i> Location (LGA, State) *</label><input id="lLocation" placeholder="e.g. Zaria, Kaduna State"/></div>
-      <div class="form-group"><label><i data-lucide="phone"></i> Contact Phone *</label><input id="lPhone" placeholder="e.g. 08023456789"/></div>
-      <div class="form-group" id="landSizeGroup" style="display:none"><label><i data-lucide="ruler"></i> Land Size (ha)</label><input id="lLandSize" type="number" step="0.1" placeholder="e.g. 50"/></div>
-      <div class="form-group"><label><i data-lucide="info"></i> Additional Details</label><input id="lDetails" placeholder="Health cert, title doc, age, etc."/></div>
+    </nav>
+    <div class="page-hero">
+      <h1><i data-lucide="shopping-cart"></i> Farm <span>Market</span></h1>
+      <p>
+        Buy and sell farm land, livestock, tractors, and equipment across
+        Nigeria.
+      </p>
     </div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <button class="btn btn-primary" onclick="addListing('sell')"><i data-lucide="megaphone"></i> Post for Sale</button>
-      <button class="btn btn-gold" onclick="addListing('buy')"><i data-lucide="search"></i> Post Buy Request</button>
+
+    <div class="page-section">
+      <!-- Post a new listing form -->
+      <h2 class="section-title">
+        <i data-lucide="plus-circle"></i> Post a Listing
+      </h2>
+      <div class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label><i data-lucide="tag"></i> Listing Type *</label>
+            <select id="lType" onchange="toggleLandFields()">
+              <option value="">-- Select --</option>
+              <optgroup label="Animals">
+                <option>Cattle for Sale</option>
+                <option>Goats for Sale</option>
+                <option>Sheep for Sale</option>
+                <option>Pigs for Sale</option>
+                <option>Poultry (Broiler)</option>
+                <option>Poultry (Layers)</option>
+                <option>Fish Stock</option>
+                <option>Other Animals</option>
+              </optgroup>
+              <optgroup label="Land">
+                <option>Farm Land for Sale</option>
+                <option>Farm Land for Lease</option>
+              </optgroup>
+              <optgroup label="Equipment">
+                <option>Tractor for Sale</option>
+                <option>Farm Tools</option>
+                <option>Irrigation Equipment</option>
+                <option>Other Equipment</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><i data-lucide="file-text"></i> Title / Description *</label
+            ><input
+              id="lTitle"
+              placeholder="e.g. 5 mature Sokoto Gudali cattle"
+            />
+          </div>
+          <div class="form-group">
+            <label><i data-lucide="banknote"></i> Price (&#8358;) *</label
+            ><input id="lPrice" type="number" placeholder="e.g. 250000" />
+          </div>
+          <div class="form-group">
+            <label><i data-lucide="package"></i> Quantity / Size</label
+            ><input id="lQty" placeholder="e.g. 5 heads / 10 hectares" />
+          </div>
+          <div class="form-group">
+            <label><i data-lucide="map-pin"></i> Location (LGA, State) *</label
+            ><input id="lLocation" placeholder="e.g. Zaria, Kaduna State" />
+          </div>
+          <div class="form-group">
+            <label><i data-lucide="phone"></i> Contact Phone *</label
+            ><input id="lPhone" placeholder="e.g. 08023456789" />
+          </div>
+          <div class="form-group" id="landSizeGroup" style="display: none">
+            <label><i data-lucide="ruler"></i> Land Size (ha)</label
+            ><input
+              id="lLandSize"
+              type="number"
+              step="0.1"
+              placeholder="e.g. 50"
+            />
+          </div>
+          <div class="form-group">
+            <label><i data-lucide="info"></i> Additional Details</label
+            ><input
+              id="lDetails"
+              placeholder="Health cert, title doc, age, etc."
+            />
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <button class="btn btn-primary" onclick="addListing('sell')">
+            <i data-lucide="megaphone"></i> Post for Sale
+          </button>
+          <button class="btn btn-gold" onclick="addListing('buy')">
+            <i data-lucide="search"></i> Post Buy Request
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter tabs + listings grid -->
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 18px;
+        "
+      >
+        <h2 class="section-title" style="margin-bottom: 0">
+          <i data-lucide="store"></i> Active Listings
+        </h2>
+        <div class="filter-tabs">
+          <button
+            class="filter-tab active"
+            data-filter="all"
+            onclick="filterListings('all')"
+          >
+            <i data-lucide="grid-3x3"></i> All
+          </button>
+          <button
+            class="filter-tab"
+            data-filter="Animals"
+            onclick="filterListings('Animals')"
+          >
+            <i data-lucide="beef"></i> Animals
+          </button>
+          <button
+            class="filter-tab"
+            data-filter="Land"
+            onclick="filterListings('Land')"
+          >
+            <i data-lucide="map"></i> Land
+          </button>
+          <button
+            class="filter-tab"
+            data-filter="Equipment"
+            onclick="filterListings('Equipment')"
+          >
+            <i data-lucide="tractor"></i> Equipment
+          </button>
+        </div>
+      </div>
+
+      <!-- Listing cards injected by market.js -->
+      <div id="listingGrid" class="listing-grid"></div>
     </div>
-  </div>
 
-  <!-- Filter tabs + listings grid -->
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px">
-    <h2 class="section-title" style="margin-bottom:0"><i data-lucide="store"></i> Active Listings</h2>
-    <div class="filter-tabs">
-      <button class="filter-tab active" data-filter="all" onclick="filterListings('all')"><i data-lucide="grid-3x3"></i> All</button>
-      <button class="filter-tab" data-filter="Animals" onclick="filterListings('Animals')"><i data-lucide="beef"></i> Animals</button>
-      <button class="filter-tab" data-filter="Land" onclick="filterListings('Land')"><i data-lucide="map"></i> Land</button>
-      <button class="filter-tab" data-filter="Equipment" onclick="filterListings('Equipment')"><i data-lucide="tractor"></i> Equipment</button>
+    <div class="modal-overlay" id="delModal">
+      <div class="modal">
+        <h2><i data-lucide="trash-2"></i> Remove Listing?</h2>
+        <p>This will permanently remove this listing from the market.</p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" onclick="closeDelModal()">
+            Cancel
+          </button>
+          <button class="btn btn-danger" onclick="confirmDelete()">
+            <i data-lucide="trash-2"></i> Remove
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Listing cards injected by market.js -->
-  <div id="listingGrid" class="listing-grid"></div>
-
-</div>
-
-<div class="modal-overlay" id="delModal">
-  <div class="modal">
-    <h2><i data-lucide="trash-2"></i> Remove Listing?</h2>
-    <p>This will permanently remove this listing from the market.</p>
-    <div class="modal-actions">
-      <button class="btn btn-primary" onclick="closeDelModal()">Cancel</button>
-      <button class="btn btn-danger" onclick="confirmDelete()"><i data-lucide="trash-2"></i> Remove</button>
-    </div>
-  </div>
-</div>
-<footer id="site-footer" class="site-footer"></footer>
-<script src="/Js/core.js"></script>
-<script src="/Js/market.js"></script>
-<script src="/Js/footer.js"></script>
-<script>
-  (function() {
-    const s = getSession();
-    if (s && s.name) { const el = document.getElementById('navUserName'); if (el) el.textContent = s.name; }
-  })();
-  lucide.createIcons();
-</script>
-</body>
+    <footer id="site-footer" class="site-footer"></footer>
+    <script src="/Js/core.js"></script>
+    <script src="/Js/market.js"></script>
+    <script src="/Js/footer.js"></script>
+    <script>
+      (function () {
+        const s = getSession();
+        if (s && s.name) {
+          const el = document.getElementById("navUserName");
+          if (el) el.textContent = s.name;
+        }
+      })();
+      lucide.createIcons();
+    </script>
+  </body>
 </html>
